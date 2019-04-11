@@ -3,5 +3,6 @@ build
 docker
 __pycache__
 *.pyc
+.ipynb_checkpoints
 runs
 .vscode
