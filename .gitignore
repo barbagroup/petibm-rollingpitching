@@ -4,3 +4,4 @@ docker
 __pycache__
 *.pyc
 runs
+.vscode
