@@ -1,7 +1,5 @@
-PETSC_DIR = $(HOME)/opt/petsc/3.10.2
+PETSC_DIR = /opt/petsc/3.10.2
 PETSC_ARCH = linux-gnu-openmpi-opt
-
-YAMLCPP_DIR = $(HOME)/software/yaml-cpp/0.6.2/linux-gnu-opt
 
 LDFLAGS = -L$(PETSC_DIR)/$(PETSC_ARCH)/lib \
           -Wl,-rpath,$(PETSC_DIR)/$(PETSC_ARCH)/lib
