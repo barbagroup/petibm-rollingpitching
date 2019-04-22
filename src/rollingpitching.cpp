@@ -76,15 +76,15 @@ PetscErrorCode RollingPitchingSolver::setCoordinatesBodies(const PetscReal &ti)
     {
         coords[k][0] = Xc \
                        + (coords0[k][0] - Xc) * cos_theta \
-                       - (coords0[k][1] - Yc) * sin_theta;
+                       + (coords0[k][1] - Yc) * sin_theta;
         
         coords[k][1] = Yc \
-                       + (coords0[k][0] - Xc) * cos_phi * sin_theta \
+                       - (coords0[k][0] - Xc) * cos_phi * sin_theta \
                        + (coords0[k][1] - Yc) * cos_phi * cos_theta \
                        + (coords0[k][2] - Zc) * sin_phi;
         
         coords[k][2] = Zc \
-                       - (coords0[k][0] - Xc) * sin_phi * sin_theta \
+                       + (coords0[k][0] - Xc) * sin_phi * sin_theta \
                        - (coords0[k][1] - Yc) * sin_phi * cos_theta \
                        + (coords0[k][2] - Zc) * cos_phi;
     }
