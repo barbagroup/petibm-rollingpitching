@@ -3,6 +3,7 @@
 
 #include <petibm/parser.h>
 
+#include "config.h"
 #include "rollingpitching.h"
 
 int main(int argc, char **argv)

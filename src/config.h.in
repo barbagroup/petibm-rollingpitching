@@ -1,0 +1,2 @@
+#define PetIBMRollingPitching_VERSION_MAJOR @PetIBMRollingPitching_VERSION_MAJOR@
+#define PetIBMRollingPitching_VERSION_MINOR @PetIBMRollingPitching_VERSION_MINOR@
