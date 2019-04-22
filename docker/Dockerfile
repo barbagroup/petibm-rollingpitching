@@ -10,7 +10,7 @@ RUN apt-get update && \
         wget && \
     rm -rf /var/lib/apt/lists/*
 
-# petibm-rollingpitching.
+# Install PetIBM app: petibm-rollingpitching.
 RUN srcdir="/opt/petibm-rollingpitching" && \
     url=https://github.com/mesnardo/petibm-rollingpitching.git && \
     git clone --recursive ${url} ${srcdir} && \
