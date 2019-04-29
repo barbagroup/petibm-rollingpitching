@@ -1,4 +1,4 @@
-Boostrap: docker
+Bootstrap: docker
 From: mesnardo/petibm-rollingpitching:latest
 
 %labels
