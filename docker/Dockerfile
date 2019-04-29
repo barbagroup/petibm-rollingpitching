@@ -12,6 +12,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install PetIBM app: petibm-rollingpitching.
+ARG PETIBMPY_SHA=8751b1d
 RUN SRCDIR=/opt/petibm-rollingpitching && \
     URL=https://github.com/mesnardo/petibm-rollingpitching.git && \
     git clone --recursive ${URL} ${SRCDIR} && \
