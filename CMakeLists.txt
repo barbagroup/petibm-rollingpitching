@@ -6,18 +6,27 @@
 
 cmake_minimum_required(VERSION 3.5)
 
+project(PetIBMRollingPitching)
+set(PetIBMRollingPitching_VERSION_MAJOR 0)
+set(PetIBMRollingPitching_VERSION_MINOR 1)
+
+enable_language(CXX)
+
 if(NOT DEFINED ENV{CXX})
     set(ENV{CXX} mpicxx)
 endif()
-
-project(PetIBMRollingPitching CXX)
-set(PetIBMRollingPitching_VERSION_MAJOR 0)
-set(PetIBMRollingPitching_VERSION_MINOR 1)
 
 configure_file(
     "${PROJECT_SOURCE_DIR}/src/config.h.in"
     "${PROJECT_BINARY_DIR}/config.h"
 )
+
+# Provide a default install directory
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+    set(CMAKE_INSTALL_PREFIX "${PROJECT_SOURCE_DIR}/installdir"
+        CACHE PATH "Installation directory" FORCE)
+endif()
+
 
 # =====================================================================
 # Cache variables
