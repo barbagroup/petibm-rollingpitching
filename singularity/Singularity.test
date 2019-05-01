@@ -1,6 +1,0 @@
-Bootstrap: docker
-From: mesnardo/petibm-rollingpitching:test
-IncludeCmd: yes
-
-%labels
-    AUTHOR mesnardo@gwu.edu

@@ -11,18 +11,6 @@ RUN apt-get update && \
         wget && \
     rm -rf /var/lib/apt/lists/*
 
-# Install PetIBM app: petibm-rollingpitching.
-ARG PETIBMPY_SHA=8751b1d
-RUN SRCDIR=/opt/petibm-rollingpitching && \
-    URL=https://github.com/mesnardo/petibm-rollingpitching.git && \
-    git clone --recursive ${URL} ${SRCDIR} && \
-    BUILDDIR=${SRCDIR}/build && \
-    mkdir -p ${BUILDDIR} && \
-    cd ${BUILDDIR} && \
-    cmake ${SRCDIR} && \
-    make all && \
-    make install
-
 # Install Miniconda3-4.5.12.
 RUN VERSION=4.5.12 && \
     FILENAME=Miniconda3-${VERSION}-Linux-x86_64.sh && \
@@ -44,6 +32,25 @@ RUN . /opt/miniconda3/bin/activate && \
     conda activate py36 && \
     python setup.py install && \
     conda deactivate
+
+# Install PetIBM app: petibm-rollingpitching.
+ARG PETIBMAPP_SHA=4ac913d
+RUN SRCDIR=/opt/petibm-rollingpitching && \
+    URL=https://github.com/mesnardo/petibm-rollingpitching.git && \
+    git clone --recursive ${URL} ${SRCDIR} && \
+    BUILDDIR=${SRCDIR}/build && \
+    mkdir -p ${BUILDDIR} && \
+    cd ${BUILDDIR} && \
+    cmake ${SRCDIR} \
+        -DCMAKE_INSTALL_PREFIX=/usr/local \
+        -DCMAKE_C_COMPILER=mpicc \
+        -DCMAKE_CXX_COMPILER=mpicxx \
+        -DPETSC_DIR=${PETSC_DIR} \
+        -DPETSC_ARCH=${PETSC_ARCH} \
+        -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON \
+        -DCMAKE_BUILD_TYPE=RELEASE && \
+    make all && \
+    make install
 
 RUN useradd -ms /bin/bash petibm-user
 USER petibm-user
