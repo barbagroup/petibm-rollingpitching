@@ -16,6 +16,10 @@ if(NOT DEFINED ENV{CXX})
     set(ENV{CXX} mpicxx)
 endif()
 
+if(NOT DEFINED ENV{CC})
+    set(ENV{CC} mpicc)
+endif()
+
 configure_file(
     "${PROJECT_SOURCE_DIR}/src/config.h.in"
     "${PROJECT_BINARY_DIR}/config.h"
