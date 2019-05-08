@@ -110,9 +110,9 @@ PetscErrorCode RollingPitchingSolver::setVelocityBodies(const PetscReal &ti)
     ierr = DMDAVecGetArrayDOF(body->da, UB, &UB_arr); CHKERRQ(ierr);
     for (PetscInt k = body->bgPt; k < body->edPt; k++)
     {
-        UB_arr[k][0] = - Omega_z * (coords[k][1] - Yc);
-        UB_arr[k][1] = Omega_z * (coords[k][0] - Xc) - Omega_x * (coords[k][2] - Zc);
-        UB_arr[k][2] = Omega_x * (coords[k][1] - Yc);
+        UB_arr[k][0] = + Omega_z * (coords[k][1] - Yc);
+        UB_arr[k][1] = - Omega_z * (coords[k][0] - Xc) + Omega_x * (coords[k][2] - Zc);
+        UB_arr[k][2] = + Omega_x * (coords[k][1] - Yc);
     }
     ierr = DMDAVecRestoreArrayDOF(body->da, UB, &UB_arr); CHKERRQ(ierr);
 
