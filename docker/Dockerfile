@@ -22,7 +22,7 @@ RUN VERSION=4.5.12 && \
     rm -f /tmp/${FILENAME}
 
 # Install petibmpy
-ARG PETIBMPY_SHA=0f921da
+ADD https://api.github.com/repos/mesnardo/petibmpy/git/refs/heads/master version.json
 RUN . /opt/miniconda3/bin/activate && \
     SRCDIR=/opt/petibmpy && \
     URL=https://github.com/mesnardo/petibmpy && \
@@ -34,7 +34,7 @@ RUN . /opt/miniconda3/bin/activate && \
     conda deactivate
 
 # Install PetIBM app: petibm-rollingpitching.
-ARG PETIBMAPP_SHA=4ac913d
+ADD https://api.github.com/repos/mesnardo/petibm-rollingpitching/git/refs/heads/master version.json
 RUN SRCDIR=/opt/petibm-rollingpitching && \
     URL=https://github.com/mesnardo/petibm-rollingpitching.git && \
     git clone --recursive ${URL} ${SRCDIR} && \
