@@ -101,18 +101,27 @@ PetscErrorCode RollingPitchingSolver::setVelocityBodies(const PetscReal &ti)
 
     PetscFunctionBeginUser;
 
+    // compute the rolling angle
+    PetscReal phi;
+    phi = -A_phi * PetscCosReal(2 * PETSC_PI * f * ti);
+
     // compute angular velocities
-    PetscReal Omega_x, Omega_z;
-    Omega_x = 2 * PETSC_PI * f * A_phi * PetscSinReal(2 * PETSC_PI * f * ti);
-    Omega_z = 2 * PETSC_PI * f * A_theta * PetscSinReal(2 * PETSC_PI * f * ti + psi);
+    PetscReal phi_dot, theta_dot;
+    phi_dot = 2 * PETSC_PI * f * A_phi * PetscSinReal(2 * PETSC_PI * f * ti);
+    theta_dot = 2 * PETSC_PI * f * A_theta * PetscSinReal(2 * PETSC_PI * f * ti + psi);
+
+    PetscReal cos_phi = PetscCosReal(phi),
+              sin_phi = PetscSinReal(phi);
 
     // update the boundary velocity array
+    PetscReal X, Y, Z;
     ierr = DMDAVecGetArrayDOF(body->da, UB, &UB_arr); CHKERRQ(ierr);
     for (PetscInt k = body->bgPt; k < body->edPt; k++)
     {
-        UB_arr[k][0] = + Omega_z * (coords[k][1] - Yc);
-        UB_arr[k][1] = - Omega_z * (coords[k][0] - Xc) + Omega_x * (coords[k][2] - Zc);
-        UB_arr[k][2] = + Omega_x * (coords[k][1] - Yc);
+        X = coords[k][0]; Y = coords[k][1]; Z = coords[k][2];
+        UB_arr[k][0] = theta_dot * (cos_phi * (Y - Yc) - sin_phi * (Z - Zc));
+        UB_arr[k][1] = - theta_dot * cos_phi * (X - Xc) + phi_dot * (Z - Zc);
+        UB_arr[k][2] = + theta_dot * sin_phi * (X - Xc) - phi_dot * (Y - Yc);
     }
     ierr = DMDAVecRestoreArrayDOF(body->da, UB, &UB_arr); CHKERRQ(ierr);
 
