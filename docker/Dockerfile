@@ -1,6 +1,6 @@
 # Dockerfile for 3D rolling and pitching plate with PetIBM.
 
-FROM barbagroup/petibm:0.4-GPU-OpenMPI-ubuntu
+FROM barbagroup/petibm:0.4.1-GPU-OpenMPI-ubuntu
 MAINTAINER Olivier Mesnard <mesnardo@gwu.edu>
 
 # Install basic requirements.
