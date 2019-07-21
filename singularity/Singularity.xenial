@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: mesnardo/petibm-rollingpitching:PetIBM0.4.1-xenial
+From: mesnardo/petibm-rollingpitching:PetIBM0.4.2-xenial
 IncludeCmd: yes
 
 %labels
