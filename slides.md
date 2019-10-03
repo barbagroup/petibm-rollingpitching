@@ -7,7 +7,7 @@ class: center, middle
 
 ---
 
-### Replication
+## Replication
 
 .medium[
 
@@ -17,24 +17,41 @@ class: center, middle
 
 NASEM, "Reproducibility and Replicability in Science" (doi: [10.17226/25303](https://doi.org/10.17226/25303))
 
-<br>
-![li_et_al_2016_header](./figures/li_dong_2016_header.png)
+<br><br>
+.center[
+
+<img src="figures/li_dong_2016_header.png" alt="li_dong_2016_header" width="800"/>
+
+]
 
 ---
 
-### Purpose of the replication study
+## Pitching-rolling motion of elliptic plates
 
 .big[
 
-The original study (Li & Dong, 2016) is not reproducible as the authors do not share their data, code, and computational workflow.
-
-We intend to replicate the study in a reproducible way.
-
-The authors are using a sharp-interface immersed boundary method (with a ghost-cell methodology).
-Our software, PetIBM, is based on a diffuse-interface immersed boundary method.
-One of our objectives is to understand how the treatment of the immersed boundary affects the numerical solution.
-
 Li & Dong (2016) suggest that the pitching-rolling plates could serve as a better canonical model for investigating the hydrodynamics of bio-inspired flapping propulsion.
+
+]
+
+---
+
+## Purpose of the replication study
+
+.big[
+
+* Original study (Li & Dong, 2016) not reproducible
+  * Code, data, and computational workflow not publicly available available
+  * What's is missing in the study?
+
+* Original study used a sharp-interface immersed boundary method
+  * PetIBM: diffuse-interface methods (delta function)
+  * How does the boundary treatment affect the numerical results?
+
+* *Objective:* replicate the study in a reproducible way
+  * Open-source software and code hosted on GitHub
+  * Singularity containers on local HPC cluster
+  * Secondary data on Zenodo
 
 ]
 
@@ -57,7 +74,7 @@ Li & Dong (2016) suggest that the pitching-rolling plates could serve as a bette
 
 ---
 
-### Decoupled IBPM
+## Decoupled IBPM
 
 <br>
 
@@ -103,7 +120,7 @@ $$
 
 ---
 
-### Decoupled IBPM
+## Decoupled IBPM
 
 Set $\gamma \equiv \begin{pmatrix} u^{n+1} \\ \delta f \end{pmatrix}$
 
@@ -148,7 +165,7 @@ $$
 
 ---
 
-### Decoupled IBPM
+## Decoupled IBPM
 
 **Idea:** Apply two successive block-LU factorizations to decouple the unknowns.
 
@@ -221,7 +238,7 @@ $$
 
 ---
 
-### Decoupled IBPM
+## Decoupled IBPM
 
 <br>
 Second block-LU decomposition:
@@ -298,7 +315,7 @@ $$
 
 ---
 
-### Decoupled IBPM
+## Decoupled IBPM
 
 **Algo 1:**
 
@@ -326,7 +343,7 @@ $\Rightarrow$ Constraints are satisfied sequentially, not simultaneously.
 
 ---
 
-### Variants
+## Variants
 
 **Algo 2** (solve an additional system for the velocity):
 
@@ -359,7 +376,7 @@ $$
 
 ---
 
-### Force prediction scheme
+## Force prediction scheme
 
 Explicit terms in the RHS of the velocity system:
 
@@ -379,7 +396,7 @@ Different schemes to predict the forces $\tilde{f}$:
 
 ---
 
-### Pitching and rolling motion
+## Pitching and rolling motion
 
 .big[
 
@@ -397,7 +414,7 @@ Different schemes to predict the forces $\tilde{f}$:
 
 ---
 
-### Parameters
+## Parameters
 
 .medium[
 
@@ -419,7 +436,7 @@ $AR = 1.27$, $St = 0.6$, $Re = 200$, and $\psi = 90^o$
 
 ---
 
-### Hydrodynamic performances
+## Hydrodynamic performances
 
 .big[
 
@@ -449,7 +466,7 @@ $P$: hydrodynamic power defined as the surface integration of the inner product 
 
 ---
 
-### Propulsion efficiency
+## Propulsion efficiency
 
 .medium[
 
