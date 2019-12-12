@@ -1,0 +1,40 @@
+# Dockerfile for 3D rolling and pitching plate with PetIBM.
+
+FROM barbagroup/petibm:0.5-GPU-OpenMPI-xenial
+MAINTAINER Olivier Mesnard <mesnardo@gwu.edu>
+
+# Install basic requirements.
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        build-essential cmake bzip2 git && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Install PetIBM app `petibm-rollingpitching`.
+ADD https://api.github.com/repos/mesnardo/petibm-rollingpitching/git/refs/heads/master version.json
+RUN URL=https://github.com/mesnardo/petibm-rollingpitching.git && \
+    PETIBMAPP_DIR=/opt/petibm-rollingpitching && \
+    git clone --recursive ${URL} ${PETIBMAPP_DIR} && \
+    BUILDDIR=${PETIBMAPP_DIR}/build && \
+    mkdir -p ${BUILDDIR} && \
+    cd ${BUILDDIR} && \
+    cmake ${PETIBMAPP_DIR} \
+        -DCMAKE_INSTALL_PREFIX=/usr/local/petibm-apps \
+        -DCMAKE_C_COMPILER=mpicc \
+        -DCMAKE_CXX_COMPILER=mpicxx \
+        -DPETIBM_DIR=${PETIBM_DIR} \
+        -DPETSC_DIR=${PETSC_DIR} \
+        -DPETSC_ARCH="" \
+        -DYAMLCPP_DIR=${PETIBM_DIR} \
+        -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON \
+        -DCMAKE_BUILD_TYPE=RELEASE && \
+    make all && \
+    make install
+ENV PATH=/usr/local/petibm-apps/bin:${PATH}
+
+# Setup user.
+RUN useradd -ms /bin/bash petibm-user
+USER petibm-user
+WORKDIR /home/petibm-user
+
+EXPOSE 23
+CMD ["/usr/sbin/sshd", "-D", "-p", "23"]

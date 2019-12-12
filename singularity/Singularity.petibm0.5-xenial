@@ -1,0 +1,6 @@
+Bootstrap: docker
+From: mesnardo/petibm-rollingpitching:PetIBM0.5-xenial
+IncludeCmd: yes
+
+%labels
+    AUTHOR mesnardo@gwu.edu
