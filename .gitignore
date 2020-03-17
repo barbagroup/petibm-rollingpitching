@@ -1,9 +1,26 @@
+# Ignore executables and build directory.
 bin
 build
+
+# Ignore some PetIBM input/output.
+.logamgx
+output
+slurm-*.*
+view.log
+wing.body
+
+# Ignore Python bytecode.
 __pycache__
 *.pyc
+
+# Ignore Jupyter Notebook checkpoints.
 .ipynb_checkpoints
-runs
+
+# Ignore VS Code local configuration.
 .vscode
+
+# Ignore Singularity images.
 *.sif
+
+# Ignore local files.
 configme.sh

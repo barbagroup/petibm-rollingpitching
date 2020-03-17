@@ -1,0 +1,153 @@
+# 331x302x211 (21091982)
+mesh:
+- direction: x
+  start: -15.0
+  subDomains:
+  - cells: 7
+    end: -8.0
+    stretchRatio: 1.0
+  - cells: 18
+    end: -2.0
+    stretchRatio: 0.8333333333
+  - cells: 20
+    end: -1.0
+    stretchRatio: 1.0
+  - cells: 18
+    end: -0.55
+    stretchRatio: 0.9090909091
+  - cells: 110
+    end: 0.55
+    stretchRatio: 1.0
+  - cells: 56
+    end: 1.95
+    stretchRatio: 1.03
+  - cells: 81
+    end: 6.0
+    stretchRatio: 1.0
+  - cells: 18
+    end: 12.0
+    stretchRatio: 1.2
+  - cells: 3
+    end: 15.0
+    stretchRatio: 1.0
+- direction: y
+  start: -12.5
+  subDomains:
+  - cells: 4
+    end: -8.5
+    stretchRatio: 1.0
+  - cells: 17
+    end: -3.0
+    stretchRatio: 0.8333333333
+  - cells: 36
+    end: -1.2
+    stretchRatio: 1.0
+  - cells: 18
+    end: -0.76
+    stretchRatio: 0.9090909091
+  - cells: 152
+    end: 0.76
+    stretchRatio: 1.0
+  - cells: 18
+    end: 1.2
+    stretchRatio: 1.1
+  - cells: 36
+    end: 3.0
+    stretchRatio: 1.0
+  - cells: 17
+    end: 8.5
+    stretchRatio: 1.2
+  - cells: 4
+    end: 12.5
+    stretchRatio: 1.0
+- direction: z
+  start: -12.5
+  subDomains:
+  - cells: 6
+    end: -6.5
+    stretchRatio: 1.0
+  - cells: 17
+    end: -1.0
+    stretchRatio: 0.8333333333
+  - cells: 10
+    end: -0.5
+    stretchRatio: 1.0
+  - cells: 18
+    end: -0.0512721662
+    stretchRatio: 0.9090909091
+  - cells: 110
+    end: 1.0487278338
+    stretchRatio: 1.0
+  - cells: 18
+    end: 1.5
+    stretchRatio: 1.1
+  - cells: 10
+    end: 2.0
+    stretchRatio: 1.0
+  - cells: 17
+    end: 7.5
+    stretchRatio: 1.2
+  - cells: 5
+    end: 12.5
+    stretchRatio: 1.0
+
+flow:
+  nu: 0.005
+  initialVelocity: [1.0, 0.0, 0.0]
+  boundaryConditions:
+  - location: xMinus
+    u: [DIRICHLET, 1.0]
+    v: [DIRICHLET, 0.0]
+    w: [DIRICHLET, 0.0]
+  - location: xPlus
+    u: [CONVECTIVE, 1.0]
+    v: [CONVECTIVE, 1.0]
+    w: [CONVECTIVE, 1.0]
+  - location: yMinus
+    u: [DIRICHLET, 1.0]
+    v: [DIRICHLET, 0.0]
+    w: [DIRICHLET, 0.0]
+  - location: yPlus
+    u: [DIRICHLET, 1.0]
+    v: [DIRICHLET, 0.0]
+    w: [DIRICHLET, 0.0]
+  - location: zMinus
+    u: [DIRICHLET, 1.0]
+    v: [DIRICHLET, 0.0]
+    w: [DIRICHLET, 0.0]
+  - location: zPlus
+    u: [DIRICHLET, 1.0]
+    v: [DIRICHLET, 0.0]
+    w: [DIRICHLET, 0.0]
+
+parameters:
+  dt: 0.0006528332077803897
+  startStep: 0
+  nt: 10000
+  nsave: 500
+  nrestart: 2000
+  convection: ADAMS_BASHFORTH_2
+  diffusion: CRANK_NICOLSON
+  velocitySolver:
+    type: CPU
+    config: config/velocity_solver.info
+  poissonSolver:
+    type: GPU
+    config: config/poisson_solver.info
+  forcesSolver:
+    type: CPU
+    config: config/forces_solver.info
+
+bodies:
+- type: points
+  name: wing
+  file: wing.body
+  kinematics:
+    c: 1.0
+    AR: 1.27
+    CoR: [0.0, 0.0, 0.0]
+    f: 0.7658924117846005
+    A_phi: 0.7853981633974483
+    A_theta: 0.7853981633974483
+    psi: 1.2217304763960306
+    theta_bias: 0.0

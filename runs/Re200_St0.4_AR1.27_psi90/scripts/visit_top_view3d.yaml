@@ -1,0 +1,16 @@
+View3DAtts:
+  viewNormal: [0.0, 1.0, 0.0]
+  focus: [3.0, 0.0, 0.5]
+  viewUp: [0.0, 0.0, -1.0]
+  viewAngle: 45.0
+  parallelScale: 2.0
+  nearPlane: -5.0
+  farPlane: 5.0
+  imagePan: [0.0, 0.0]
+  imageZoom: 1.0
+  perspective: 0
+  eyeAngle: 2
+  axis3DScaleFlag: 0
+  axis3DScales: [1, 1, 1]
+  shear: [0, 0, 1]
+  windowValid: 1
