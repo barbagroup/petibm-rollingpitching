@@ -11,7 +11,7 @@ args = rodney.parse_command_line()
 display_kinematics = False  # Add kinematics to the figure
 
 # Load force coefficients.
-label = 'Re=100, St=0.6, AR=1.27, psi=90'
+label = 'PetIBM'
 simudir = pathlib.Path(__file__).absolute().parents[1]
 config = rodney.WingKinematics(Re=200, St=0.6, nt_period=2000)
 filepath = simudir / 'output' / 'forces-0.txt'
@@ -58,6 +58,13 @@ if display_kinematics:
                  label='Pitching', color='black', linestyle=':')
         axt.set_xlim(xlim)
         axt.set_ylim(-60.0, 60.0)
+
+if args.extra_data:
+    # Add the force coefficients from Li and Dong (2016).
+    # The signals were digitized from Figure 9 of the article.
+    ax1.plot(*rodney.li_dong_2016_load_ct(), label='Li & Dong (2016)')
+    ax2.plot(*rodney.li_dong_2016_load_cl(), label='Li & Dong (2016)')
+    ax3.plot(*rodney.li_dong_2016_load_cz(), label='Li & Dong (2016)')
 
 ax1.legend(frameon=False, prop=dict(size=10))
 fig.tight_layout()
