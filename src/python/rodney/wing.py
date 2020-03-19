@@ -2,6 +2,7 @@
 
 import math
 import numpy
+from scipy.spatial import ConvexHull
 
 import distmesh
 import petibmpy
@@ -197,14 +198,21 @@ class WingKinematics(object):
     def create_body(self, ds=0.05, thickness=0.0, sort_points=False):
         a, b = self.c / 2, self.S / 2
         center = (self.hook[0], self.hook[-1] + b)
-        x, z = create_ellipse(a, b, center=center, ds=ds)
+        if thickness > 0.0:
+            # Create a thick ellipse.
+            x, y, z = create_disk(thickness * self.c, a, b,
+                                  center=center, ds=ds)
+        else:
+            # Create flat plate (ellipse).
+            x, z = create_ellipse(a, b, center=center, ds=ds)
+            y = numpy.zeros_like(x)
         if sort_points:
+            # Re-order points
             idx = numpy.argmin(z)
             x_ref, z_ref = x[idx], z[idx]
             dist = numpy.sqrt((x - x_ref)**2 + (z - z_ref)**2)
             indices = numpy.argsort(dist)
-            x, z = x[indices], z[indices]
-        y = numpy.zeros_like(x)
+            x, y, z = x[indices], y[indices], z[indices]
         self.set_coordinates(x, y, z, org=True)
 
     def load_body(self, filepath, **kwargs):
@@ -275,10 +283,10 @@ def create_ellipse(a, b, center=(0.0, 0.0), ds=0.05):
 
     Parameters
     ----------
-    a : float, optional
-        Semi major axis of the ellipse; default is 0.5.
-    b : float, optional
-        Semi major axis of the ellipse; default is 0.5.
+    a : float
+        Semi major axis of the ellipse.
+    b : float
+        Semi major axis of the ellipse.
     center : tuple of floats, optional
         Center of the ellipse; default is (0.0, 0.0).
     ds : float, optional
@@ -307,6 +315,65 @@ def create_ellipse(a, b, center=(0.0, 0.0), ds=0.05):
 
     return x, y
 
+
+def create_disk(thickness, a, b, center=(0.0, 0.0), ds=0.05):
+    """Create a disk of specified thickness with elliptical surface.
+
+    Parameters
+    ----------
+    thickness : float
+        Thickness of the disk.
+    a : float
+        Semi major axis of the ellipse.
+    b : float
+        Semi major axis of the ellipse.
+    center : tuple of floats, optional
+        Center of the ellipse; default is (0.0, 0.0).
+    ds : float, optional
+        Resolution of the ellipse (approx. distance between two neighbors);
+        default is 0.05.
+
+    Returns
+    -------
+    numpy.ndarray
+        x-coordinates of the disk points as a 1D array of floats.
+    numpy.ndarray
+        y-coordinates of the disk points as a 1D array of floats.
+    numpy.ndarray
+        z-coordinates of the disk points as a 1D array of floats.
+
+    """
+    # Create ellipse (flat plate).
+    x0, z0 = create_ellipse(a, b, center=center, ds=ds)
+    # Limits of the disk.
+    ystart, yend = -0.5 * thickness, 0.5 * thickness
+    # Store coordinates of bottom surface.
+    xb, zb = x0.copy(), z0.copy()
+    yb = numpy.full_like(xb, ystart)
+    # Store coordinates of top surface.
+    xt, zt = x0.copy(), z0.copy()
+    yt = numpy.full_like(xt, yend)
+    # Get coordinates of contour points from bottom.
+    points = numpy.array([xb, zb]).T
+    hull = ConvexHull(points)
+    xc, zc = points[hull.vertices, 0], points[hull.vertices, 1]
+    # Generate points on lateral side of the disk.
+    tol = 1e-8  # tolerance to beat machine precision error for math.ceil
+    N = math.ceil(thickness / ds - tol) - 1  # number of lateral points
+    if N > 0:
+        ds_true = thickness / (N + 1)  # adjust spacing for uniform split
+        xl, zl = numpy.tile(xc, N), numpy.tile(zc, N)
+        yl = [numpy.full_like(xc, ystart + (n + 1) * ds_true)
+              for n in range(N)]
+        yl = numpy.concatenate(yl)
+    else:
+        # No points on lateral side of disk.
+        xl, yl, zl = numpy.array([]), numpy.array([]), numpy.array([])
+    # Concatenate bottom, top, and lateral surfaces.
+    x = numpy.concatenate([xb, xt, xl])
+    y = numpy.concatenate([yb, yt, yl])
+    z = numpy.concatenate([zb, zt, zl])
+    return x, y, z
 
 def rotation(x, y, z,
              roll=0.0, yaw=0.0, pitch=0.0, center=[0.0, 0.0, 0.0]):
