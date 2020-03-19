@@ -1,0 +1,364 @@
+probes:
+- name: probe1-u
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe1-u.h5
+  n_sum: 1000
+  box:
+    x: [0.985, 1.015]
+    y: [-3.053431, 3.053431]
+    z: [0.49, 0.51]
+- name: probe2-u
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe2-u.h5
+  n_sum: 1000
+  box:
+    x: [1.985, 2.015]
+    y: [-3.053431, 3.053431]
+    z: [0.49, 0.51]
+- name: probe3-u
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe3-u.h5
+  n_sum: 1000
+  box:
+    x: [2.964026, 3.03069]
+    y: [-3.053431, 3.053431]
+    z: [0.49, 0.51]
+- name: probe4-u
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe4-u.h5
+  n_sum: 1000
+  box:
+    x: [3.925, 4.075]
+    y: [-3.053431, 3.053431]
+    z: [0.49, 0.51]
+- name: probe5-u
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe5-u.h5
+  n_sum: 1000
+  box:
+    x: [4.925, 5.075]
+    y: [-3.053431, 3.053431]
+    z: [0.49, 0.51]
+- name: probe1-v
+  type: VOLUME
+  field: v
+  viewer: hdf5
+  path: probe1-v.h5
+  n_sum: 1000
+  box:
+    x: [0.99, 1.01]
+    y: [-3.081419, 3.081419]
+    z: [0.49, 0.51]
+- name: probe2-v
+  type: VOLUME
+  field: v
+  viewer: hdf5
+  path: probe2-v.h5
+  n_sum: 1000
+  box:
+    x: [1.99, 2.01]
+    y: [-3.081419, 3.081419]
+    z: [0.49, 0.51]
+- name: probe3-v
+  type: VOLUME
+  field: v
+  viewer: hdf5
+  path: probe3-v.h5
+  n_sum: 1000
+  box:
+    x: [2.980446, 3.048109]
+    y: [-3.081419, 3.081419]
+    z: [0.49, 0.51]
+- name: probe4-v
+  type: VOLUME
+  field: v
+  viewer: hdf5
+  path: probe4-v.h5
+  n_sum: 1000
+  box:
+    x: [3.95, 4.05]
+    y: [-3.081419, 3.081419]
+    z: [0.49, 0.51]
+- name: probe5-v
+  type: VOLUME
+  field: v
+  viewer: hdf5
+  path: probe5-v.h5
+  n_sum: 1000
+  box:
+    x: [4.95, 5.05]
+    y: [-3.081419, 3.081419]
+    z: [0.49, 0.51]
+- name: probe1-w
+  type: VOLUME
+  field: w
+  viewer: hdf5
+  path: probe1-w.h5
+  n_sum: 1000
+  box:
+    x: [0.99, 1.01]
+    y: [-0.01, 0.01]
+    z: [-3.250603, 3.355725]
+- name: probe2-w
+  type: VOLUME
+  field: w
+  viewer: hdf5
+  path: probe2-w.h5
+  n_sum: 1000
+  box:
+    x: [1.99, 2.01]
+    y: [-0.01, 0.01]
+    z: [-3.250603, 3.355725]
+- name: probe3-w
+  type: VOLUME
+  field: w
+  viewer: hdf5
+  path: probe3-w.h5
+  n_sum: 1000
+  box:
+    x: [2.980446, 3.048109]
+    y: [-0.01, 0.01]
+    z: [-3.250603, 3.355725]
+- name: probe4-w
+  type: VOLUME
+  field: w
+  viewer: hdf5
+  path: probe4-w.h5
+  n_sum: 1000
+  box:
+    x: [3.95, 4.05]
+    y: [-0.01, 0.01]
+    z: [-3.250603, 3.355725]
+- name: probe5-w
+  type: VOLUME
+  field: w
+  viewer: hdf5
+  path: probe5-w.h5
+  n_sum: 1000
+  box:
+    x: [4.95, 5.05]
+    y: [-0.01, 0.01]
+    z: [-3.250603, 3.355725]
+- name: probe1-u-kin
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe1-u-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [0.985, 1.015]
+    y: [-3.053431, 3.053431]
+    z: [0.49, 0.51]
+- name: probe2-u-kin
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe2-u-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [1.985, 2.015]
+    y: [-3.053431, 3.053431]
+    z: [0.49, 0.51]
+- name: probe3-u-kin
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe3-u-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [2.964026, 3.03069]
+    y: [-3.053431, 3.053431]
+    z: [0.49, 0.51]
+- name: probe4-u-kin
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe4-u-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [3.925, 4.075]
+    y: [-3.053431, 3.053431]
+    z: [0.49, 0.51]
+- name: probe5-u-kin
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe5-u-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [4.925, 5.075]
+    y: [-3.053431, 3.053431]
+    z: [0.49, 0.51]
+- name: probe1-v-kin
+  type: VOLUME
+  field: v
+  viewer: hdf5
+  path: probe1-v-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [0.99, 1.01]
+    y: [-3.081419, 3.081419]
+    z: [0.49, 0.51]
+- name: probe2-v-kin
+  type: VOLUME
+  field: v
+  viewer: hdf5
+  path: probe2-v-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [1.99, 2.01]
+    y: [-3.081419, 3.081419]
+    z: [0.49, 0.51]
+- name: probe3-v-kin
+  type: VOLUME
+  field: v
+  viewer: hdf5
+  path: probe3-v-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [2.980446, 3.048109]
+    y: [-3.081419, 3.081419]
+    z: [0.49, 0.51]
+- name: probe4-v-kin
+  type: VOLUME
+  field: v
+  viewer: hdf5
+  path: probe4-v-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [3.95, 4.05]
+    y: [-3.081419, 3.081419]
+    z: [0.49, 0.51]
+- name: probe5-v-kin
+  type: VOLUME
+  field: v
+  viewer: hdf5
+  path: probe5-v-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [4.95, 5.05]
+    y: [-3.081419, 3.081419]
+    z: [0.49, 0.51]
+- name: probe1-w-kin
+  type: VOLUME
+  field: w
+  viewer: hdf5
+  path: probe1-w-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [0.99, 1.01]
+    y: [-3.053431, 3.053431]
+    z: [0.485, 0.505]
+- name: probe2-w-kin
+  type: VOLUME
+  field: w
+  viewer: hdf5
+  path: probe2-w-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [1.99, 2.01]
+    y: [-3.053431, 3.053431]
+    z: [0.485, 0.505]
+- name: probe3-w-kin
+  type: VOLUME
+  field: w
+  viewer: hdf5
+  path: probe3-w-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [2.980446, 3.048109]
+    y: [-3.053431, 3.053431]
+    z: [0.485, 0.505]
+- name: probe4-w-kin
+  type: VOLUME
+  field: w
+  viewer: hdf5
+  path: probe4-w-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [3.95, 4.05]
+    y: [-3.053431, 3.053431]
+    z: [0.485, 0.505]
+- name: probe5-w-kin
+  type: VOLUME
+  field: w
+  viewer: hdf5
+  path: probe5-w-kin.h5
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [4.95, 5.05]
+    y: [-3.053431, 3.053431]
+    z: [0.485, 0.505]
+- name: probe_vicinity-u
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe_vicinity-u.h5
+  n_monitor: 10
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [-0.515, 0.515]
+    y: [-0.72, 0.72]
+    z: [-0.01, 1.01]
+- name: probe_vicinity-v
+  type: VOLUME
+  field: v
+  viewer: hdf5
+  path: probe_vicinity-v.h5
+  n_monitor: 10
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [-0.51, 0.51]
+    y: [-0.715, 0.715]
+    z: [-0.01, 1.01]
+- name: probe_vicinity-w
+  type: VOLUME
+  field: w
+  viewer: hdf5
+  path: probe_vicinity-w.h5
+  n_monitor: 10
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [-0.51, 0.51]
+    y: [-0.72, 0.72]
+    z: [-0.015, 1.005]
+- name: probe_vicinity-p
+  type: VOLUME
+  field: p
+  viewer: hdf5
+  path: probe_vicinity-p.h5
+  n_monitor: 10
+  t_start: 5.222665662243117
+  t_end: 6.528332077803897
+  box:
+    x: [-0.51, 0.51]
+    y: [-0.72, 0.72]
+    z: [-0.01, 1.01]
