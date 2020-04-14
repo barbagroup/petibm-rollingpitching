@@ -160,11 +160,15 @@ def visit_render_save_states(states,
             visit.DrawPlots()
             visit.SetView3D(View3DAtts)
 
+        # Get time-step index (stored as time value in XDMF file).
+        visit.Query('Time')
+        timestep = int(visit.GetQueryOutputValue())
+
         # Set rendering attributes.
         visit.SetRenderingAttributes(RenderingAtts)
 
         # Set state-specific attributes to save the window.
-        SaveWindowAtts.fileName = '{}{:0>7}'.format(prefix, state)
+        SaveWindowAtts.fileName = '{}{:0>7}'.format(prefix, timestep)
         visit.SetSaveWindowAttributes(SaveWindowAtts)
 
         visit.SaveWindow()
