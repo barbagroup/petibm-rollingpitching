@@ -75,7 +75,7 @@ for field in fields:
 
 # Set probe information for the velocity and pressure in the fine region.
 fields = ['u', 'v', 'w', 'p']
-dx = 0.015
+dx = 0.01
 buf = 0.05 * c
 for field in fields:
     filepath = datadir / 'grid.h5'
@@ -90,7 +90,7 @@ for field in fields:
     probe = petibmpy.ProbeVolume(name, field,
                                  box=box, adjust_box=True, grid=grid,
                                  t_start=float(t_start), t_end=float(t_end),
-                                 n_monitor=round(nt_period / 100),
+                                 n_monitor=round(nt_period / 200),
                                  path=f'{name}.h5')
     probes.append(probe)
 

@@ -54,7 +54,7 @@ simudir = pathlib.Path(__file__).absolute().parents[1]
 figdir = simudir / 'figures'
 
 # Lateral view: Load PNG image from file.
-filepath = figdir / 'qcrit_wx_lateral_view_0000017.png'
+filepath = figdir / 'qcrit_wx_lateral_view_0008500.png'
 with open(filepath, 'rb') as infile:
     img = pyplot.imread(infile)
 
@@ -80,11 +80,11 @@ fig.tight_layout()
 
 # Lateral view: Save figure.
 if args.save_figures:
-    filepath = figdir / 'qcrit_wx_lateral_view_0000017_post.png'
+    filepath = figdir / 'qcrit_wx_lateral_view_0008500_post.png'
     fig.savefig(filepath, dpi=300, bbox_inches='tight')
 
 # Top view: Load PNG image from file.
-filepath = figdir / 'qcrit_wx_top_view_0000017.png'
+filepath = figdir / 'qcrit_wx_top_view_0008500.png'
 with open(filepath, 'rb') as infile:
     img = pyplot.imread(infile)
 
@@ -110,7 +110,7 @@ fig.tight_layout()
 
 # Top view: Save figure.
 if args.save_figures:
-    filepath = figdir / 'qcrit_wx_top_view_0000017_post.png'
+    filepath = figdir / 'qcrit_wx_top_view_0008500_post.png'
     fig.savefig(filepath, dpi=300, bbox_inches='tight')
 
 # Display figures.

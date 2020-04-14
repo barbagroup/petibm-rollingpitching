@@ -6,9 +6,6 @@ The isosurfaces are colored with the streamwise vorticity.
 import collections
 import os
 
-import sys
-sys.path.insert(1, '/home/mesnardo/git/mesnardo/petibm-rollingpitching/src/python')
-
 import visitplot
 
 
@@ -41,5 +38,4 @@ for view in views:
                                      wx_lims=(-5.0, 5.0),
                                      config_view=view.path,
                                      out_dir=figdir, prefix=prefix,
-                                     figsize=view.figsize,
-                                     state=17)
+                                     figsize=view.figsize)

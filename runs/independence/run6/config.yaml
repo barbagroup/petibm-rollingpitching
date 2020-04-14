@@ -1,4 +1,4 @@
-# 281x243x169 (11539827)
+# 331x302x211 (21091982)
 mesh:
 - direction: x
   start: -15.0
@@ -9,19 +9,19 @@ mesh:
   - cells: 18
     end: -2.0
     stretchRatio: 0.8333333333
-  - cells: 21
-    end: -0.95
+  - cells: 20
+    end: -1.0
     stretchRatio: 1.0
-  - cells: 14
-    end: -0.555
+  - cells: 18
+    end: -0.55
     stretchRatio: 0.9090909091
-  - cells: 74
-    end: 0.555
+  - cells: 110
+    end: 0.55
     stretchRatio: 1.0
-  - cells: 41
-    end: 1.75
+  - cells: 56
+    end: 1.95
     stretchRatio: 1.03
-  - cells: 85
+  - cells: 81
     end: 6.0
     stretchRatio: 1.0
   - cells: 18
@@ -39,19 +39,19 @@ mesh:
   - cells: 17
     end: -3.0
     stretchRatio: 0.8333333333
-  - cells: 37
-    end: -1.15
+  - cells: 36
+    end: -1.2
     stretchRatio: 1.0
-  - cells: 13
-    end: -0.7575
+  - cells: 18
+    end: -0.76
     stretchRatio: 0.9090909091
-  - cells: 101
-    end: 0.7575
+  - cells: 152
+    end: 0.76
     stretchRatio: 1.0
-  - cells: 13
-    end: 1.15
+  - cells: 18
+    end: 1.2
     stretchRatio: 1.1
-  - cells: 37
+  - cells: 36
     end: 3.0
     stretchRatio: 1.0
   - cells: 17
@@ -69,19 +69,19 @@ mesh:
   - cells: 17
     end: -1.0
     stretchRatio: 0.8333333333
-  - cells: 11
-    end: -0.45
+  - cells: 10
+    end: -0.5
     stretchRatio: 1.0
-  - cells: 14
-    end: -0.0562721662
+  - cells: 18
+    end: -0.0512721662
     stretchRatio: 0.9090909091
-  - cells: 74
-    end: 1.0537278338
+  - cells: 110
+    end: 1.0487278338
     stretchRatio: 1.0
-  - cells: 14
-    end: 1.45
+  - cells: 18
+    end: 1.5
     stretchRatio: 1.1
-  - cells: 11
+  - cells: 10
     end: 2.0
     stretchRatio: 1.0
   - cells: 17
@@ -121,11 +121,11 @@ flow:
     w: [DIRICHLET, 0.0]
 
 parameters:
-  dt: 0.0006528332077803897
+  dt: 0.0013056664155607794
   startStep: 0
-  nt: 10000
-  nsave: 500
-  nrestart: 2000
+  nt: 5000
+  nsave: 250
+  nrestart: 1000
   convection: ADAMS_BASHFORTH_2
   diffusion: CRANK_NICOLSON
   velocitySolver:

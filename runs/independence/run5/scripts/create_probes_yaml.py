@@ -75,13 +75,14 @@ for field in fields:
 
 # Set probe information for the velocity and pressure in the fine region.
 fields = ['u', 'v', 'w', 'p']
-dx = 0.015
+dx = 0.01
+buf = 0.05 * c
 for field in fields:
     filepath = datadir / 'grid.h5'
     grid = petibmpy.read_grid_hdf5(filepath, field)
-    xlim = (-c / 2 - 5 * dx, c / 2 + 5 * dx)
-    ylim = (-S * numpy.cos(A_phi) - 5 * dx, S * numpy.cos(A_phi) + 5 * dx)
-    zlim = (0.0 - 5 * dx, S + 5 * dx)
+    xlim = (-c / 2 - buf, c / 2 + buf)
+    ylim = (-S * numpy.cos(A_phi) - buf, S * numpy.cos(A_phi) + buf)
+    zlim = (0.0 - buf, S + buf)
     box = (xlim, ylim, zlim)
     name = f'probe_vicinity-{field}'
     t_start = (n_periods - 1) * nt_period * dt
@@ -89,10 +90,10 @@ for field in fields:
     probe = petibmpy.ProbeVolume(name, field,
                                  box=box, adjust_box=True, grid=grid,
                                  t_start=float(t_start), t_end=float(t_end),
-                                 n_monitor=10,
+                                 n_monitor=round(nt_period / 200),
                                  path=f'{name}.h5')
     probes.append(probe)
 
 # Load the probe information to a YAML file.
-filepath = simudir / 'probes-new.yaml'
+filepath = simudir / 'probes.yaml'
 petibmpy.probes_yaml_dump(probes, filepath)

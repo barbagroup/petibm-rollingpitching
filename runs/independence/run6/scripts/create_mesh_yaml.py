@@ -42,7 +42,7 @@ Box = collections.namedtuple('Box', ['xstart', 'xend',
 
 
 # Set kinematics of the wing.
-config = rodney.WingKinematics(nt_period=2000)
+config = rodney.WingKinematics(nt_period=1000)
 c = config.c  # chord length
 S = config.S  # spanwise length
 A_phi = config.A_phi  # rolling amplitude (radians)
@@ -50,7 +50,7 @@ A_phi = config.A_phi  # rolling amplitude (radians)
 box1 = Box(-15.0, 15.0, -12.5, 12.5, -12.5, 12.5)
 box2, width2 = Box(-2.0, 6.0, -3.0, 3.0, -1.0, 2.0), 0.05 * c
 
-dx = 0.015 * c
+dx = 0.01 * c
 buf = 0.05 * c
 xs, xe = resize_for_uniform(c, 0.0, dx, buf=buf)
 ys, ye = resize_for_uniform(2 * S * numpy.cos(A_phi), 0.0, dx, buf=buf)

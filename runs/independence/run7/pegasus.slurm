@@ -6,7 +6,7 @@
 #SBATCH --partition=small-gpu
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=20
-#SBATCH --time=15:00:00
+#SBATCH --time=20:00:00
 
 module load singularity/3.4.2
 module load openmpi/gcc/64/3.1.4
@@ -39,7 +39,7 @@ echo $SLURM_JOB_ID
 printf "\n*** JOB NODE LIST ***\n"
 echo $SLURM_JOB_NODELIST
 
-simudir="/lustre/groups/barbalab/mesnardo/rollingpitching/run7"
+simudir="/lustre/groups/barbalab/mesnardo/rollingpitching/independence/run7"
 indir="/mnt"
 img="/SEAS/home/mesnardo/images/petibm-rollingpitching_petibm0.5.1-xenial.sif"
 

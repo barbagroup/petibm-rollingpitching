@@ -16,7 +16,7 @@ figdir = maindir / 'figures'
 # Hard-coded for now.
 psi_values = [60, 70, 80, 90, 100, 110, 120]
 ct_values = [0.2114, 0.4591, 0.6835, 0.9138, 1.1306, 1.3276, 1.4904]
-eta_values = [0.0181, 0.0602, 0.0685, 0.1548, 0.2306, 0.2655, 0.2709]
+eta_values = [0.0296, 0.0758, 0.1236, 0.1635, 0.1814, 0.1772, 0.1603]
 
 pyplot.rc('font', family='serif', size=14)
 fig, ax = pyplot.subplots(figsize=(6.0, 4.0))

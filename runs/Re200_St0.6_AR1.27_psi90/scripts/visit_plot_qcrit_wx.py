@@ -42,4 +42,4 @@ for view in views:
                                      config_view=view.path,
                                      out_dir=figdir, prefix=prefix,
                                      figsize=view.figsize,
-                                     state=17)
+                                     state=5)

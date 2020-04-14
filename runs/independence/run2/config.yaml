@@ -1,77 +1,95 @@
-# 379x270x212 (21693960)
+# 281x243x169 (11539827)
 mesh:
 - direction: x
   start: -15.0
   subDomains:
-  - cells: 22
+  - cells: 7
+    end: -8.0
+    stretchRatio: 1.0
+  - cells: 18
     end: -2.0
     stretchRatio: 0.8333333333
-  - cells: 10
-    end: -1.5
+  - cells: 21
+    end: -0.95
     stretchRatio: 1.0
   - cells: 14
-    end: -1.1
+    end: -0.555
     stretchRatio: 0.9090909091
-  - cells: 220
-    end: 2.2
+  - cells: 74
+    end: 0.555
     stretchRatio: 1.0
   - cells: 41
-    end: 3.4
+    end: 1.75
     stretchRatio: 1.03
-  - cells: 52
+  - cells: 85
     end: 6.0
     stretchRatio: 1.0
-  - cells: 20
-    end: 15.0
+  - cells: 18
+    end: 12.0
     stretchRatio: 1.2
+  - cells: 3
+    end: 15.0
+    stretchRatio: 1.0
 - direction: y
   start: -12.5
   subDomains:
-  - cells: 20
+  - cells: 4
+    end: -8.5
+    stretchRatio: 1.0
+  - cells: 17
     end: -3.0
     stretchRatio: 0.8333333333
-  - cells: 31
-    end: -1.45
+  - cells: 37
+    end: -1.15
+    stretchRatio: 1.0
+  - cells: 13
+    end: -0.7575
+    stretchRatio: 0.9090909091
+  - cells: 101
+    end: 0.7575
+    stretchRatio: 1.0
+  - cells: 13
+    end: 1.15
+    stretchRatio: 1.1
+  - cells: 37
+    end: 3.0
+    stretchRatio: 1.0
+  - cells: 17
+    end: 8.5
+    stretchRatio: 1.2
+  - cells: 4
+    end: 12.5
+    stretchRatio: 1.0
+- direction: z
+  start: -12.5
+  subDomains:
+  - cells: 6
+    end: -6.5
+    stretchRatio: 1.0
+  - cells: 17
+    end: -1.0
+    stretchRatio: 0.8333333333
+  - cells: 11
+    end: -0.45
     stretchRatio: 1.0
   - cells: 14
-    end: -1.05
+    end: -0.0562721662
     stretchRatio: 0.9090909091
-  - cells: 140
-    end: 1.05
+  - cells: 74
+    end: 1.0537278338
     stretchRatio: 1.0
   - cells: 14
     end: 1.45
     stretchRatio: 1.1
-  - cells: 31
-    end: 3.0
-    stretchRatio: 1.0
-  - cells: 20
-    end: 12.5
-    stretchRatio: 1.2
-- direction: z
-  start: -12.5
-  subDomains:
-  - cells: 21
-    end: -1.0
-    stretchRatio: 0.8333333333
-  - cells: 1
-    end: -0.95
-    stretchRatio: 1.0
-  - cells: 14
-    end: -0.55
-    stretchRatio: 0.9090909091
-  - cells: 140
-    end: 1.55
-    stretchRatio: 1.0
-  - cells: 14
-    end: 1.95
-    stretchRatio: 1.1
-  - cells: 1
+  - cells: 11
     end: 2.0
     stretchRatio: 1.0
-  - cells: 21
-    end: 12.5
+  - cells: 17
+    end: 7.5
     stretchRatio: 1.2
+  - cells: 5
+    end: 12.5
+    stretchRatio: 1.0
 
 flow:
   nu: 0.005
@@ -103,11 +121,11 @@ flow:
     w: [DIRICHLET, 0.0]
 
 parameters:
-  dt: 0.0013056664155607794
+  dt: 0.0006528332077803897
   startStep: 0
-  nt: 5000
-  nsave: 250
-  nrestart: 5000
+  nt: 10000
+  nsave: 500
+  nrestart: 2000
   convection: ADAMS_BASHFORTH_2
   diffusion: CRANK_NICOLSON
   velocitySolver:

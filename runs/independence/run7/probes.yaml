@@ -319,7 +319,7 @@ probes:
   field: u
   viewer: hdf5
   path: probe_vicinity-u.h5
-  n_monitor: 20
+  n_monitor: 10
   t_start: 5.222665662243117
   t_end: 6.528332077803897
   box:
@@ -331,7 +331,7 @@ probes:
   field: v
   viewer: hdf5
   path: probe_vicinity-v.h5
-  n_monitor: 20
+  n_monitor: 10
   t_start: 5.222665662243117
   t_end: 6.528332077803897
   box:
@@ -343,7 +343,7 @@ probes:
   field: w
   viewer: hdf5
   path: probe_vicinity-w.h5
-  n_monitor: 20
+  n_monitor: 10
   t_start: 5.222665662243117
   t_end: 6.528332077803897
   box:
@@ -355,7 +355,7 @@ probes:
   field: p
   viewer: hdf5
   path: probe_vicinity-p.h5
-  n_monitor: 20
+  n_monitor: 10
   t_start: 5.222665662243117
   t_end: 6.528332077803897
   box:

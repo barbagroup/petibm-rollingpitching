@@ -14,7 +14,7 @@ simudir = pathlib.Path(__file__).absolute().parents[1]
 wing = rodney.WingKinematics(nt_period=2000)
 
 # Discretize the body.
-wing.create_body(ds=0.015, sort_points=True)
+wing.create_body(ds=0.01, thickness=0.03, sort_points=True)
 x, y, z = wing.get_coordinates()
 
 # Save the coordinates into a file.

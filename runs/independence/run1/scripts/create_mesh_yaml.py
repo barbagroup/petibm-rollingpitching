@@ -1,34 +1,63 @@
 """Create a YAML file with info about the structured Cartesian mesh."""
 
 import collections
+import math
 from matplotlib import pyplot
 import numpy
 import pathlib
 
 import petibmpy
 
+import rodney
+
 
 def get_gridline_config(p1, p2, p3, p4, p5, p6, d1, d2, r1, r2, r3, r4):
     """Create configuration of sub-domains along a direction."""
     cfg = []
     cfg.append(dict(start=p1, end=p2, width=d1, stretchRatio=r1,
-                    reverse=True))
+                    max_width=20 * d1, reverse=True))
     cfg.append(dict(start=p2, end=p3, width=d2, stretchRatio=r2, max_width=d1,
                     reverse=True))
     cfg.append(dict(start=p3, end=p4, width=d2))
     cfg.append(dict(start=p4, end=p5, width=d2, stretchRatio=r3, max_width=d1))
-    cfg.append(dict(start=p5, end=p6, width=d1, stretchRatio=r4))
+    cfg.append(dict(start=p5, end=p6, width=d1, stretchRatio=r4,
+                    max_width=20 * d1))
     return cfg
+
+
+def resize_for_uniform(L, xc, dx, buf=0.0):
+    """Adjust the limits of the interval to allow uniform discretization."""
+    xs, xe = xc - L / 2 - buf, xc + L / 2 + buf
+    L = xe - xs
+    n = math.ceil(L / dx)
+    L = n * dx
+    xs, xe = xc - L / 2, xc + L / 2
+    assert abs((xe - xs) / n - dx) < 1e-12
+    return xs, xe
 
 
 Box = collections.namedtuple('Box', ['xstart', 'xend',
                                      'ystart', 'yend',
                                      'zstart', 'zend'])
 
+
+# Set kinematics of the wing.
+config = rodney.WingKinematics(nt_period=2000)
+c = config.c  # chord length
+S = config.S  # spanwise length
+A_phi = config.A_phi  # rolling amplitude (radians)
+
 box1 = Box(-15.0, 15.0, -12.5, 12.5, -12.5, 12.5)
-box2, width2 = Box(-2.0, 6.0, -3.0, 3.0, -1.0, 2.0), 0.05
-box3, width3 = Box(-1.1, 2.2, -1.05, 1.05, -0.55, 1.55), 0.03
-show_figure = True
+box2, width2 = Box(-2.0, 6.0, -3.0, 3.0, -1.0, 2.0), 0.05 * c
+
+dx = 0.03 * c
+buf = 0.05 * c
+xs, xe = resize_for_uniform(c, 0.0, dx, buf=buf)
+ys, ye = resize_for_uniform(2 * S * numpy.cos(A_phi), 0.0, dx, buf=buf)
+zs, ze = resize_for_uniform(S, S / 2, dx, buf=buf)
+box3, width3 = Box(xs, xe, ys, ye, zs, ze), dx
+
+show_figure = False
 
 config_x = get_gridline_config(box1.xstart, box2.xstart, box3.xstart,
                                box3.xend, box2.xend, box1.xend,

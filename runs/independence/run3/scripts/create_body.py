@@ -11,7 +11,7 @@ import rodney
 simudir = pathlib.Path(__file__).absolute().parents[1]
 
 # Create the configuration for the wing kinematics.
-wing = rodney.WingKinematics(nt_period=1000)
+wing = rodney.WingKinematics(nt_period=2000)
 
 # Discretize the body.
 wing.create_body(ds=0.01, sort_points=True)

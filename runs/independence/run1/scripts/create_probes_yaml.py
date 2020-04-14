@@ -3,6 +3,7 @@
 from collections import OrderedDict
 import numpy
 import pathlib
+import yaml
 
 import petibmpy
 
@@ -14,7 +15,7 @@ simudir = pathlib.Path(__file__).absolute().parents[1]
 datadir = simudir / 'output'
 
 # Set the wing kinematics.
-config = rodney.WingKinematics(nt_period=1000)
+config = rodney.WingKinematics(nt_period=2000)
 c = config.c  # chord length
 S = config.S  # spanwise length
 A_phi = config.A_phi  # rolling amplitude (radians)
@@ -31,7 +32,6 @@ for field in fields:
     grid = petibmpy.read_grid_hdf5(filepath, field)
     xlocs = [1.0, 2.0, 3.0, 4.0, 5.0]
     for i, xloc in enumerate(xlocs):
-        probe = OrderedDict({})
         name = f'probe{i + 1}-{field}'
         box = ((xloc, xloc), (-3.0, 3.0), (S / 2, S / 2))
         probe = petibmpy.ProbeVolume(name, field,
@@ -47,7 +47,6 @@ for field in fields:
     grid = petibmpy.read_grid_hdf5(filepath, field)
     xlocs = [1.0, 2.0, 3.0, 4.0, 5.0]
     for i, xloc in enumerate(xlocs):
-        probe = OrderedDict({})
         name = f'probe{i + 1}-{field}'
         box = ((xloc, xloc), (0.0, 0.0), (-3.0, 3.0))
         probe = petibmpy.ProbeVolume(name, field,
@@ -56,14 +55,34 @@ for field in fields:
                                      path=f'{name}.h5')
         probes.append(probe)
 
-# Set probe information for the velocity and pressure in the fine region.
-fields = ['u', 'v', 'w', 'p']
+# Set probe information to get fluctuation of the kinetic energy.
+fields = ['u', 'v', 'w']
 for field in fields:
     filepath = datadir / 'grid.h5'
     grid = petibmpy.read_grid_hdf5(filepath, field)
-    xlim = (-c / 2, c / 2)
-    ylim = (-S * numpy.cos(A_phi), S * numpy.cos(A_phi))
-    zlim = (0.0, S)
+    xlocs = [1.0, 2.0, 3.0, 4.0, 5.0]
+    for i, xloc in enumerate(xlocs):
+        name = f'probe{i + 1}-{field}-kin'
+        box = ((xloc, xloc), (-3.0, 3.0), (S / 2, S / 2))
+        t_start = (n_periods - 1) * nt_period * dt
+        t_end = n_periods * nt_period * dt
+        probe = petibmpy.ProbeVolume(name, field,
+                                     box=box, adjust_box=True, grid=grid,
+                                     t_start=float(t_start),
+                                     t_end=float(t_end),
+                                     path=f'{name}.h5')
+        probes.append(probe)
+
+# Set probe information for the velocity and pressure in the fine region.
+fields = ['u', 'v', 'w', 'p']
+dx = 0.03
+buf = 0.05 * c
+for field in fields:
+    filepath = datadir / 'grid.h5'
+    grid = petibmpy.read_grid_hdf5(filepath, field)
+    xlim = (-c / 2 - buf, c / 2 + buf)
+    ylim = (-S * numpy.cos(A_phi) - buf, S * numpy.cos(A_phi) + buf)
+    zlim = (0.0 - buf, S + buf)
     box = (xlim, ylim, zlim)
     name = f'probe_vicinity-{field}'
     t_start = (n_periods - 1) * nt_period * dt
@@ -71,7 +90,7 @@ for field in fields:
     probe = petibmpy.ProbeVolume(name, field,
                                  box=box, adjust_box=True, grid=grid,
                                  t_start=float(t_start), t_end=float(t_end),
-                                 n_monitor=10,
+                                 n_monitor=round(nt_period / 200),
                                  path=f'{name}.h5')
     probes.append(probe)
 

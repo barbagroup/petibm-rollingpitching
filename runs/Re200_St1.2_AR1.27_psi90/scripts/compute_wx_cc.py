@@ -1,7 +1,6 @@
 """Compute the cell-centered x-component of the vorticity."""
 
 import pathlib
-import yaml
 
 import petibmpy
 
@@ -22,12 +21,7 @@ grid_wx = petibmpy.read_grid_hdf5(gridpath, 'wx')
 gridpath = outdir / 'grid.h5'
 petibmpy.write_grid_hdf5(gridpath, name, x, y, z)
 
-# Get temporal parameters.
-filepath = simudir / 'config.yaml'
-with open(filepath, 'r') as infile:
-    config = yaml.load(infile, Loader=yaml.FullLoader)['parameters']
-nstart, nt, nsave = config['startStep'], config['nt'], config['nsave']
-timesteps = list(range(nstart, nstart + nt + 1, nsave))
+# List of time-step indices to process.
 timesteps = [8500]
 
 interp_args = dict(bounds_error=False, method='linear', fill_value=None)

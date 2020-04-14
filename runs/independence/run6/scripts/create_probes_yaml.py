@@ -15,7 +15,7 @@ simudir = pathlib.Path(__file__).absolute().parents[1]
 datadir = simudir / 'output'
 
 # Set the wing kinematics.
-config = rodney.WingKinematics(nt_period=2000)
+config = rodney.WingKinematics(nt_period=1000)
 c = config.c  # chord length
 S = config.S  # spanwise length
 A_phi = config.A_phi  # rolling amplitude (radians)
@@ -75,7 +75,7 @@ for field in fields:
 
 # Set probe information for the velocity and pressure in the fine region.
 fields = ['u', 'v', 'w', 'p']
-dx = 0.015
+dx = 0.01
 buf = 0.05 * c
 for field in fields:
     filepath = datadir / 'grid.h5'
@@ -90,7 +90,7 @@ for field in fields:
     probe = petibmpy.ProbeVolume(name, field,
                                  box=box, adjust_box=True, grid=grid,
                                  t_start=float(t_start), t_end=float(t_end),
-                                 n_monitor=round(nt_period / 100),
+                                 n_monitor=round(nt_period / 200),
                                  path=f'{name}.h5')
     probes.append(probe)
 

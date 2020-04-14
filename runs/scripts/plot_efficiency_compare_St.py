@@ -4,6 +4,7 @@ Plot agains the Strouhal number.
 """
 
 from matplotlib import pyplot
+import numpy
 import pathlib
 
 import rodney
@@ -16,7 +17,7 @@ figdir = maindir / 'figures'
 # Hard-coded for now.
 St_values = [0.4, 0.6, 0.8, 1.0, 1.2]
 ct_values = [-0.0614, 0.9138, 2.5538, 4.8801, 7.9053]
-eta_values = [-0.0145, 0.1548, 0.1996, 0.1398, 0.1081]
+eta_values = [-0.0493, 0.1635, 0.1705, 0.1552, 0.1384]
 
 pyplot.rc('font', family='serif', size=14)
 fig, ax = pyplot.subplots(figsize=(6.0, 4.0))
