@@ -70,7 +70,7 @@ if args.extra_data:
     ax3.scatter(*rodney.li_dong_2016_load_cz(), label='Li & Dong (2016)',
                 **scatter_kwargs)
 
-ax1.legend(frameon=False, prop=dict(size=10))
+ax1.legend(frameon=False, prop=dict(size=10), scatterpoints=3)
 fig.tight_layout()
 
 if args.save_figures:

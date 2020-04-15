@@ -19,11 +19,11 @@ St_values = [0.4, 0.6, 0.8, 1.0, 1.2]
 ct_values = [-0.0614, 0.9138, 2.5538, 4.8801, 7.9053]
 eta_values = [-0.0493, 0.1635, 0.1705, 0.1552, 0.1384]
 
-pyplot.rc('font', family='serif', size=14)
+pyplot.rc('font', family='serif', size=12)
 fig, ax = pyplot.subplots(figsize=(6.0, 4.0))
 # Plot cycle-averaged thrust coefficient versus Strouhal number.
 ax.set_xlabel('St')
-label = r'$\bar{C_T}$'
+label = r'$\overline{C_T}$'
 ax.set_ylabel(label)
 ax.plot(St_values, ct_values, label=label, color='C3', marker='o')
 ax.set_ylim(-2.0, 12.0)

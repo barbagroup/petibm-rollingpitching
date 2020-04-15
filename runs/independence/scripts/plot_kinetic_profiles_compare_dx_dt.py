@@ -109,7 +109,7 @@ if args.extra_data:
     ax.scatter(*rodney.li_dong_2016_load_kin_profiles(),
                label='Li & Dong (2016)',
                s=10, marker='o', edgecolor='black', color='none')
-ax.legend(frameon=False, prop={'size': 10}, loc='upper left')
+# ax.legend(frameon=False, prop={'size': 10}, loc='upper left')
 ax.set_xlim(-2.0, 6.0)
 ax.set_ylim(-3.0, 3.0)
 fig.tight_layout()

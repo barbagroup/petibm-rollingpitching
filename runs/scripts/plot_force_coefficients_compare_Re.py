@@ -65,7 +65,7 @@ ax3.plot(solution3.t, solution3.cz, label=label3, **plot_kwargs3)
 ax3.set_xlim(xlim)
 ax3.set_ylim(ylim)
 
-ax1.legend(frameon=False)
+ax1.legend(frameon=False, loc='lower left', labelspacing=0.25)
 fig.tight_layout()
 
 if args.save_figures:

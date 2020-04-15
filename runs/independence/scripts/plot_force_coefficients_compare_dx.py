@@ -11,7 +11,7 @@ maindir = pathlib.Path(__file__).absolute().parents[1]
 data = {}
 
 # Process force coefficients for simulation on coarse mesh.
-label = r'$\Delta x / c = 0.03$ (coarse)'
+label = 'Coarse'
 simudir = maindir / 'run1'
 config = rodney.WingKinematics(Re=200.0, St=0.6, psi=90.0, nt_period=2000)
 filepath = simudir / 'output' / 'forces-0.txt'
@@ -21,7 +21,7 @@ data[label] = dict(config=config, solution=solution,
                    plot_kwargs=dict(linestyle='-', color='C0'))
 
 # Process force coefficients for simulation on intermediate mesh.
-label = r'$\Delta x / c = 0.01$ (nominal)'
+label = 'Nominal'
 simudir = maindir / 'run3'
 config = rodney.WingKinematics(Re=200.0, St=0.6, psi=90.0, nt_period=2000)
 filepath = simudir / 'output' / 'forces-0.txt'
@@ -31,7 +31,7 @@ data[label] = dict(config=config, solution=solution,
                    plot_kwargs=dict(linestyle='-', color='C3'))
 
 # Process force coefficients for simulation on finer mesh.
-label = r'$\Delta x / c = 0.005$ (fine)'
+label = 'Fine'
 simudir = maindir / 'run4'
 config = rodney.WingKinematics(Re=200.0, St=0.6, psi=90.0, nt_period=2000)
 filepath = simudir / 'output' / 'forces-0.txt'
@@ -73,14 +73,15 @@ if args.extra_data:
     # Add the force coefficients from Li and Dong (2016).
     # Data were digitized from Figure 9 of the article.
     scatter_kwargs = dict(s=10, facecolors='none', edgecolors='black')
-    ax1.scatter(*rodney.li_dong_2016_load_ct(), label='Li & Dong (2016)',
-                **scatter_kwargs)
-    ax2.scatter(*rodney.li_dong_2016_load_cl(), label='Li & Dong (2016)',
-                **scatter_kwargs)
-    ax3.scatter(*rodney.li_dong_2016_load_cz(), label='Li & Dong (2016)',
-                **scatter_kwargs)
+    ax1.scatter(*rodney.li_dong_2016_load_ct(),
+                label='Li & Dong (2016)', **scatter_kwargs)
+    ax2.scatter(*rodney.li_dong_2016_load_cl(),
+                label='Li & Dong (2016)', **scatter_kwargs)
+    ax3.scatter(*rodney.li_dong_2016_load_cz(),
+                label='Li & Dong (2016)', **scatter_kwargs)
 
-ax1.legend(frameon=False, prop=dict(size=10))
+ax1.legend(frameon=False, prop=dict(size=10),
+           scatterpoints=3, labelspacing=0.25)
 fig.tight_layout()
 
 if args.save_figures:
