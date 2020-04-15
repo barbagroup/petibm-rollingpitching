@@ -21,7 +21,7 @@ eta_values = [0.0296, 0.0758, 0.1236, 0.1635, 0.1814, 0.1772, 0.1603]
 pyplot.rc('font', family='serif', size=12)
 fig, ax = pyplot.subplots(figsize=(6.0, 4.0))
 # Plot cycle-averaged thrust coefficient versus phase difference.
-ax.set_xlabel(r'$\psi$')
+ax.set_xlabel(r'$\psi$ ($^o$)')
 label = r'$\overline{C_T}$'
 ax.set_ylabel(label)
 ax.plot(psi_values, ct_values, label=label, color='C3', marker='o')
