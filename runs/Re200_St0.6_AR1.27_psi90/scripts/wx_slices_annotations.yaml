@@ -1,0 +1,224 @@
+xlocs:
+  0.0:
+  - text: "$V_1$"
+    xytext: [-0.9, 0.9]
+    xyarrow: [-0.5, 0.15]
+  - text: "$V_3$"
+    xytext: [-0.8, -1.1]
+    xyarrow: [-0.3, -0.15]
+  - text: "$V_4$"
+    xytext: [0.8, 0.6]
+    xyarrow: [0.6, 0.0]
+  0.2:
+  - text: "$V_1$"
+    xytext: [-0.9, 0.6]
+    xyarrow: [-0.55, 0.03]
+  - text: "$V_2$"
+    xytext: [0.5, -1.5]
+    xyarrow: [0.3, -0.9]
+  - text: "$V_3$"
+    xytext: [-0.6, -1.5]
+    xyarrow: [-0.15, -0.25]
+  - text: "$V_4$"
+    xytext: [0.8, 0.6]
+    xyarrow: [0.55, -0.14]
+  0.3:
+  - text: "$V_1$"
+    xytext: [-0.9, 0.6]
+    xyarrow: [-0.55, 0.0]
+  - text: "$V_2$"
+    xytext: [0.6, -1.6]
+    xyarrow: [0.37, -0.94]
+  - text: "$V_3$"
+    xytext: [-0.8, -1.6]
+    xyarrow: [-0.35, -0.3]
+  - text: "$V_4$"
+    xytext: [0.8, 0.6]
+    xyarrow: [0.48, -0.25]
+  0.75:
+  - text: "$V_1$"
+    xytext: [-0.9, 0.6]
+    xyarrow: [-0.5, -0.23]
+  - text: "$V_2$"
+    xytext: [0.8, -1.6]
+    xyarrow: [0.68, -0.83]
+  - text: "$V_3$"
+    xytext: [-0.9, -1.6]
+    xyarrow: [0.05, -0.7]
+  - text: "$V_4$"
+    xytext: [0.8, 0.6]
+    xyarrow: [0.32, -0.4]
+  1.1:
+  - text: "$V_1$"
+    xytext: [-0.7, -1.6]
+    xyarrow: [-0.15, -0.7]
+  - text: "$V_2$"
+    xytext: [0.6, -1.6]
+    xyarrow: [0.55, -0.7]
+  - text: "$V_5$"
+    xytext: [-1.0, 0.5]
+  - text: "$V_6$"
+    xytext: [0.7, 0.9]
+  - text: "$V_7$"
+    xytext: [-0.6, 1.4]
+    xyarrow: [-0.1, 0.6]
+  - text: "$V_8$"
+    xytext: [0.4, 1.8]
+    xyarrow: [0.16, 1.02]
+  1.3:
+  - text: "$V_5$"
+    xytext: [-1.0, 0.6]
+  - text: "$V_6$"
+    xytext: [0.85, 0.95]
+  - text: "$V_7$"
+    xytext: [-0.65, 1.65]
+    xyarrow: [-0.08, 0.8]
+  - text: "$V_8$"
+    xytext: [0.36, 1.75]
+    xyarrow: [0.13, 1.0]
+  1.85:
+  - text: "$V_5$"
+    xytext: [-0.9, 0.8]
+  - text: "$V_6$"
+    xytext: [0.9, 0.8]
+  - text: "$V_7$"
+    xytext: [-0.6, 1.9]
+    xyarrow: [0.0, 1.2]
+  - text: "$V_8$"
+    xytext: [0.6, 1.9]
+    xyarrow: [0.35, 1.2]
+  - text: "inner\nloop\nof $R_6$"
+    xytext: [-1.1, -2.3]
+  - text: ""
+    xytext: [-0.45, -1.5]
+    xyarrow: [-0.13, -0.99]
+  - text: ""
+    xytext: [-0.45, -1.5]
+    xyarrow: [0.07, -1.15]
+  - text: "outer\nloop\nof $R_6$"
+    xytext: [0.3, -2.3]
+  - text: ""
+    xytext: [0.5, -1.5]
+    xyarrow: [-0.2, -0.7]
+  - text: ""
+    xytext: [0.5, -1.5]
+    xyarrow: [0.4, -1.0]
+  2.0:
+  - text: "$V_5$"
+    xytext: [-0.9, 0.8]
+  - text: "$V_6$"
+    xytext: [0.83, 0.8]
+  - text: "$V_7$"
+    xytext: [-0.6, 2.0]
+    xyarrow: [0.0, 1.1]
+  - text: "$V_8$"
+    xytext: [0.6, 2.0]
+    xyarrow: [0.36, 1.15]
+  - text: "inner\nloop\nof $R_6$"
+    xytext: [-1.1, -2.3]
+  - text: ""
+    xytext: [-0.45, -1.5]
+    xyarrow: [-0.04, -0.99]
+  - text: ""
+    xytext: [-0.45, -1.5]
+    xyarrow: [0.04, -1.26]
+  - text: "outer\nloop\nof $R_6$"
+    xytext: [0.3, -2.3]
+  - text: ""
+    xytext: [0.5, -1.5]
+    xyarrow: [-0.24, -0.75]
+  - text: ""
+    xytext: [0.5, -1.5]
+    xyarrow: [0.5, -1.2]
+  2.7:
+  - text: "outer loop of $R_5$"
+    xytext: [-1.1, 2.0]
+  - text: ""
+    xytext: [-0.1, 1.9]
+    xyarrow: [-0.3, 1.01]
+  - text: ""
+    xytext: [-0.1, 1.9]
+    xyarrow: [0.46, 1.49]
+  - text: "inner loop of $R_5$"
+    xytext: [-1.1, 0.4]
+  - text: ""
+    xytext: [0.2, 0.6]
+    xyarrow: [0.08, 0.9]
+  - text: ""
+    xytext: [0.2, 0.6]
+    xyarrow: [0.21, 1.29]
+  - text: "outer loop of $R_6$"
+    xytext: [-1.1, -0.55]
+  - text: ""
+    xytext: [0.0, -0.6]
+    xyarrow: [-0.26, -1.02]
+  - text: ""
+    xytext: [0.0, -0.6]
+    xyarrow: [0.56, -1.02]
+  - text: "inner loop of $R_6$"
+    xytext: [-1.1, -2.3]
+  - text: ""
+    xytext: [0.0, -2.1]
+    xyarrow: [-0.06, -1.46]
+  - text: ""
+    xytext: [0.0, -2.1]
+    xyarrow: [0.36, -1.56]
+  3.8:
+  - text: "contrails of $R_3$"
+    xytext: [-1.1, 2.0]
+  - text: ""
+    xytext: [0.15, 1.9]
+    xyarrow: [-0.22, 1.0]
+  - text: ""
+    xytext: [0.15, 1.9]
+    xyarrow: [0.17, 1.07]
+  - text: "inner\nloop\nof $R_4$"
+    xytext: [-1.1, -1.2]
+  - text: ""
+    xytext: [-0.5, -1.26]
+    xyarrow: [-0.02, -1.95]
+  - text: ""
+    xytext: [-0.5, -1.26]
+    xyarrow: [0.41, -2.05]
+  - text: "outer\nloop\nof $R_4$"
+    xytext: [0.4, -1.1]
+  - text: ""
+    xytext: [0.7, -1.15]
+    xyarrow: [-0.12, -1.35]
+  - text: ""
+    xytext: [0.7, -1.15]
+    xyarrow: [0.7, -1.56]
+  4.5:
+  - text: "$R_3$"
+    xytext: [0.3, 0.8]
+  - text: ""
+    xytext: [0.4, 1.1]
+    xyarrow: [-0.27, 1.77]
+  - text: ""
+    xytext: [0.4, 1.1]
+    xyarrow: [0.7, 1.58]
+  - text: "contrails of $R_2$"
+    xytext: [-1.1, -2.2]
+  - text: ""
+    xytext: [0.06, -1.98]
+    xyarrow: [-0.18, -1.15]
+  - text: ""
+    xytext: [0.06, -1.98]
+    xyarrow: [0.24, -1.23]
+  5.25:
+  - text: "contrails of $R_1$"
+    xytext: [-1.1, 2.1]
+  - text: ""
+    xytext: [0.1, 1.98]
+    xyarrow: [-0.24, 1.28]
+  - text: ""
+    xytext: [0.1, 1.98]
+    xyarrow: [0.19, 1.32]
+  - text: "$R_2$"
+    xytext: [0.0, -0.9]
+  - text: ""
+    xytext: [0.14, -1.0]
+    xyarrow: [-0.38, -1.74]
+  - text: ""
+    xytext: [0.14, -1.0]
+    xyarrow: [0.68, -1.8]
