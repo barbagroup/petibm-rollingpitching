@@ -2,7 +2,7 @@
 
 import collections
 import math
-from matplotlib import pyplot
+from matplotlib import patches, pyplot
 import pathlib
 
 import rodney
@@ -11,11 +11,18 @@ import rodney
 Point = collections.namedtuple('Point', ['x', 'y'])
 
 
+def get_midpoint(point1, point2):
+    """Return the midpoint."""
+    return Point(0.5 * (point1.x + point2.x),
+                 0.5 * (point1.y + point2.y))
+
+
 class Line(object):
     """Define a line."""
 
     def __init__(self, point1, point2):
         """Compute slope and intercept given two reference points."""
+        self.p1, self.p2 = point1, point2
         self.a, self.b = self._slope_intercept(point1, point2)
 
     def _slope_intercept(self, point1, point2):
@@ -40,12 +47,28 @@ class Line(object):
             alpha *= 180.0 / math.pi
         return alpha
 
-    def create_line_guide(self, point1, point2,
-                          extend_left=0.0, extend_right=0.0):
-        """Return line guide for Matplotlib figure."""
-        x1, x2 = point1.x - extend_left, point2.x + extend_right
+    def extend(self, left=0.0, right=0.0):
+        """Return a new extended line."""
+        x1, x2 = self.p1.x - left, self.p2.x + right
         y1, y2 = self.y([x1, x2])
-        return (x1, x2), (y1, y2)
+        return Line(Point(x1, y1), Point(x2, y2))
+
+    def limits(self):
+        """Return line limits as tuples."""
+        return (self.p1.x, self.p2.x), (self.p1.y, self.p2.y)
+
+
+def annotate_angle(ax, text, xloc, line, hline, buf=50):
+    """Annotate angle between two given lines."""
+    posA, posB = Point(xloc, line.y(xloc)), Point(xloc, hline.y(xloc))
+    arrowstyle = '<->,head_length=5,head_width=3'
+    arrow = patches.FancyArrowPatch(posA=(posA.x, posA.y),
+                                    posB=(posB.x, posB.y),
+                                    arrowstyle=arrowstyle,
+                                    color='black', linewidth=2.0,
+                                    connectionstyle='arc3,rad=-0.5')
+    ax.add_patch(arrow)
+    ax.annotate(text, xy=(xloc + buf, get_midpoint(posA, posB).y))
 
 
 # Parse command line and set directories.
@@ -53,62 +76,73 @@ args = rodney.parse_command_line()
 simudir = pathlib.Path(__file__).absolute().parents[1]
 figdir = simudir / 'figures'
 
-# Lateral view: Load PNG image from file.
+# Set default font family and size for Matplotlib figures.
+pyplot.rc('font', family='serif', size=16)
+
+# --------------------------------------------------------------
+# Post-process lateral view: compute and add inclination angles.
+# --------------------------------------------------------------
+
+# Load PNG image from file.
 filepath = figdir / 'qcrit_wx_lateral_view_0008500.png'
 with open(filepath, 'rb') as infile:
     img = pyplot.imread(infile)
 
-# Lateral view: Plot the image.
-fig, ax = pyplot.subplots(figsize=(12.0, 6.0))
+# Plot the image.
+fig, ax = pyplot.subplots(figsize=(6.0, 4.0))
 ax.imshow(img)
-lims = ax.axis('scaled', adjustable='box')
-xstart, xend, yend, ystart = lims
-ax.axhline(0.5 * (yend - ystart), xmin=xstart, xmax=xend,
-           color='black', linestyle='-.', linewidth=2.0)
+xstart, xend, yend, ystart = ax.axis('scaled', adjustable='box')
+ymid = 0.5 * (yend - ystart)
 
-# Lateral view: Create inclination line for alpha.
-alpha = (Point(261, 204), Point(586, 82))  # in pixels
-line = Line(*alpha)
-print(f'alpha: {line.get_inclination():.2f}')
-ax.plot(*line.create_line_guide(*alpha, extend_left=50, extend_right=250),
-        color='black', linestyle='--', linewidth=2.0)
+# Compute and plot inclination line for alpha.
+ring1 = get_midpoint(Point(247, 168), Point(334, 215))  # first vortex ring
+ring2 = get_midpoint(Point(399, 95), Point(506, 152))  # second vortex ring
+alpha = Line(ring1, ring2)  # line passing through the vortex ring centers
+print(f'alpha: {alpha.get_inclination():.2f}')
+line = alpha.extend(left=100, right=200)
+ax.plot(*line.limits(), color='black', linestyle='--', linewidth=3.0)
+hline = Line(Point(xstart, ymid), Point(xend, ymid))
+ax.plot(*hline.limits(), color='black', linestyle='-.', linewidth=3.0)
+annotate_angle(ax, r'$\alpha$', 500, line, hline, buf=50)
 
-# Lateral view: Set limits and remove axis.
+# Set limits and remove axes.
 ax.axis((xstart, xend - 100, yend, ystart))
 ax.axis('off')
 fig.tight_layout()
 
-# Lateral view: Save figure.
+# Save figure.
 if args.save_figures:
     filepath = figdir / 'qcrit_wx_lateral_view_0008500_post.png'
     fig.savefig(filepath, dpi=300, bbox_inches='tight')
 
-# Top view: Load PNG image from file.
+# ----------------------
+# Post-process top view.
+# ----------------------
+
+# Load PNG image from file.
 filepath = figdir / 'qcrit_wx_top_view_0008500.png'
 with open(filepath, 'rb') as infile:
     img = pyplot.imread(infile)
 
-# Top view: Plot the image.
-fig, ax = pyplot.subplots(figsize=(12.0, 6.0))
+# Plot the image.
+fig, ax = pyplot.subplots(figsize=(6.0, 4.0))
 ax.imshow(img)
-lims = ax.axis('scaled', adjustable='box')
-xstart, xend, yend, ystart = lims
+xstart, xend, yend, ystart = ax.axis('scaled', adjustable='box')
 ax.axhline(0.5 * (yend - ystart), xmin=xstart, xmax=xend,
-           color='black', linestyle='-.', linewidth=2.0)
+           color='black', linestyle='-.', linewidth=3.0)
 
-# Top view: Compute inclination angle.
-gamma = (Point(321, 164), Point(644, 153))  # in pixels
-line = Line(*gamma)
-print(f'gamma: {line.get_inclination():.2f}')
-ax.plot(*line.create_line_guide(*gamma, extend_left=20, extend_right=20),
-        color='black', linestyle='--', linewidth=2.0)
+# Compute inclination angle gamma.
+ring1 = get_midpoint(Point(274, 127), Point(274, 259))  # first vortex ring
+ring2 = get_midpoint(Point(430, 103), Point(430, 249))  # second vortex ring
+gamma = Line(ring1, ring2)  # line passing through the vortex ring centers
+print(f'gamma: {gamma.get_inclination():.2f}')
 
-# Top view: Set limits and remove axis.
+# Set limits and remove axis.
 ax.axis((xstart, xend - 100, yend - 50, ystart + 50))
 ax.axis('off')
 fig.tight_layout()
 
-# Top view: Save figure.
+# Save figure.
 if args.save_figures:
     filepath = figdir / 'qcrit_wx_top_view_0008500_post.png'
     fig.savefig(filepath, dpi=300, bbox_inches='tight')
