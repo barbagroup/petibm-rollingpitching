@@ -1,0 +1,21 @@
+timesteps:
+  8500:
+  - text: "root"
+    xytext: [100, 415]
+  - text: "tip"
+    xytext: [340, 487]
+  - text: "LEV"
+    xytext: [200, 560]
+    xyarrow: [267, 491]
+  - text: "$V_1$"
+    xytext: [106, 248]
+    xyarrow: [227, 317]
+  - text: "$V_2$"
+    xytext: [486, 316]
+    xyarrow: [410, 353]
+  - text: "$V_3$"
+    xytext: [70, 350]
+    xyarrow: [268, 360]
+  - text: "$V_4$"
+    xytext: [450, 410]
+    xyarrow: [334, 382]

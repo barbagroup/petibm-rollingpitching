@@ -1,0 +1,91 @@
+timesteps:
+  7750:
+  - text: "root"
+    xytext: [100, 430]
+  - text: "tip"
+    xytext: [330, 490]
+  - text: "$V_1$"
+    xytext: [60, 320]
+    xyarrow: [210, 370]
+  - text: "$V_2$"
+    xytext: [450, 420]
+    xyarrow: [360, 418]
+  - text: "TEV"
+    xytext: [450, 360]
+    xyarrow: [352, 383]
+  - text: "'double-C'\nshaped ring"
+    xytext: [60, 150]
+    xyarrow: [243, 222]
+  7875:
+  - text: "$V_1$"
+    xytext: [60, 320]
+    xyarrow: [210, 370]
+  - text: "$V_2$"
+    xytext: [450, 420]
+    xyarrow: [360, 418]
+  8000:
+  - text: "$V_1$"
+    xytext: [60, 320]
+    xyarrow: [200, 365]
+  - text: "$V_2$"
+    xytext: [450, 420]
+    xyarrow: [380, 418]
+  8250:
+  - text: "$V_1$"
+    xytext: [60, 320]
+    xyarrow: [213, 344]
+  - text: "$V_2$"
+    xytext: [455, 360]
+    xyarrow: [395, 376]
+  8375:
+  - text: "$V_1$"
+    xytext: [138, 286]
+    xyarrow: [223, 332]
+  - text: "$V_2$"
+    xytext: [484, 376]
+    xyarrow: [402, 376]
+  - text: "$V_3$"
+    xytext: [100, 350]
+    xyarrow: [255, 368]
+  - text: "$V_4$"
+    xytext: [400, 490]
+    xyarrow: [328, 379]
+  - text: "contrails"
+    xytext: [25, 200]
+  - text: ""
+    xytext: [150, 200]
+    xyarrow: [278, 293]
+  - text: ""
+    xytext: [150, 200]
+    xyarrow: [330, 300]
+  - text: "LEV"
+    xytext: [200, 560]
+    xyarrow: [267, 491]
+  8500:
+  - text: "LEV"
+    xytext: [200, 560]
+    xyarrow: [267, 491]
+  - text: "$V_1$"
+    xytext: [106, 248]
+    xyarrow: [227, 317]
+  - text: "$V_2$"
+    xytext: [486, 316]
+    xyarrow: [410, 353]
+  - text: "$V_3$"
+    xytext: [70, 350]
+    xyarrow: [265, 364]
+  - text: "$V_4$"
+    xytext: [450, 410]
+    xyarrow: [338, 364]
+  8750:
+  - text: "'double-C'\nshaped ring"
+    xytext: [415, 500]
+  - text: ""
+    xytext: [470, 430]
+    xyarrow: [412, 373]
+  8875:
+  - text: "newly formed\nouter 'C' loop"
+    xytext: [400, 550]
+  - text: ""
+    xytext: [395, 496]
+    xyarrow: [350, 439]
