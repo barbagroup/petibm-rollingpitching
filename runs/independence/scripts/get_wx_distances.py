@@ -75,7 +75,7 @@ def get_extreme_points_2d(grid, field):
     return {'min': min_point, 'max': max_point}
 
 
-def plot_wx_slice_2d(grid, wx, time, config, boxes, points):
+def plot_wx_slice_2d(grid, wx, time, config):
     pyplot.rc('font', family='serif', size=14)
     fig, ax = pyplot.subplots(figsize=(6.0, 6.0))
     contourf_levels = numpy.linspace(-5.0, 5.0, num=50)
@@ -94,21 +94,25 @@ def plot_wx_slice_2d(grid, wx, time, config, boxes, points):
     # Add contours of the streamwise vorticity.
     ax.contour(*grid, wx,
                levels=contour_levels, linewidths=0.5, colors='k')
-    # Add patches to represent search boxes.
-    for box in boxes:
-        width, height = box.xe - box.xs, box.ye - box.ys
-        rect = patches.Rectangle((box.xs, box.ys), width, height,
-                                 edgecolor='black', facecolor='none')
-        ax.add_patch(rect)
-    # Add markers to represent extreme points.
-    for point in points:
-        ax.scatter(point.x, point.y, c='C0', s=20, marker='x')
     # Finalize figure.
     ax.axis('scaled', adjustable='box')
     ax.set_xlim(-1.0, 1.0)
     ax.set_ylim(-2.0, 2.0)
     fig.tight_layout()
     return fig, ax
+
+
+def add_annotations(ax, p1, p2, y, text=''):
+    # Add markers to visualize points.
+    ax.scatter([p1.x, p2.x], [p1.y, p2.y], c='C0', s=20, marker='o')
+    # Add vertical lines from points to y.
+    ax.vlines(p1.x, y, p1.y, color='black', linestyle='--')
+    ax.vlines(p2.x, y, p2.y, color='black', linestyle='--')
+    # Add two-head arrow between vertical lines.
+    ax.annotate('', xy=(p2.x, y), xytext=(p1.x, y),
+                arrowprops=dict(arrowstyle='<->', shrinkA=0.0, shrinkB=0.0))
+    # Add text description above arrow.
+    ax.annotate(text, xy=(0.5 * (p1.x + p2.x), y + 0.1))
 
 
 def get_wx_distances(simudir, config, plot=False, save_figures=False):
@@ -135,9 +139,9 @@ def get_wx_distances(simudir, config, plot=False, save_figures=False):
     p4 = get_extreme_points_2d(g4, s4)['max']
 
     if plot:
-        fig1, ax1 = plot_wx_slice_2d((z, y), wx_slices[0], time, config,
-                                     [box1, box2, box3, box4],
-                                     [p1, p2, p3, p4])
+        fig1, ax1 = plot_wx_slice_2d((z, y), wx_slices[0], time, config)
+        add_annotations(ax1, p1, p2, -1.5, '$d_2$')
+        add_annotations(ax1, p3, p4, +1.0, '$d_1$')
 
     box5 = Box2D(-0.6, -0.1, 0.3, 0.9)
     g5, s5 = get_field_in_box_2d((z, y), wx_slices[1], box5)
@@ -156,9 +160,9 @@ def get_wx_distances(simudir, config, plot=False, save_figures=False):
     p8 = get_extreme_points_2d(g8, s8)['min']
 
     if plot:
-        fig2, ax2 = plot_wx_slice_2d((z, y), wx_slices[1], time, config,
-                                     [box5, box6, box7, box8],
-                                     [p5, p6, p7, p8])
+        fig2, ax2 = plot_wx_slice_2d((z, y), wx_slices[1], time, config)
+        add_annotations(ax2, p5, p6, -1.0, '$d_4$')
+        add_annotations(ax2, p7, p8, +1.5, '$d_3$')
 
     d1 = abs(p4.x - p1.x)
     d2 = abs(p3.x - p2.x)
