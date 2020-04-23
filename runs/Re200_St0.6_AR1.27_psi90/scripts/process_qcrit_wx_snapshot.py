@@ -79,6 +79,40 @@ figdir = simudir / 'figures'
 # Set default font family and size for Matplotlib figures.
 pyplot.rc('font', family='serif', size=16)
 
+# ------------------------------------------------------------
+# Post-process perspective view: add vortex rings annotations.
+# ------------------------------------------------------------
+
+# Load PNG image from file.
+filepath = figdir / 'qcrit_wx_perspective_view_0008500.png'
+with open(filepath, 'rb') as infile:
+    img = pyplot.imread(infile)
+
+# Plot the image.
+fig, ax = pyplot.subplots(figsize=(6.0, 4.0))
+ax.imshow(img)
+xstart, xend, yend, ystart = ax.axis('scaled', adjustable='box')
+
+# Add text annotations for vortex rings.
+ax.annotate('$R_1$', xy=(670, 40))
+ax.annotate('$R_2$', xy=(780, 510))
+ax.annotate('$R_3$', xy=(550, 80))
+ax.annotate('$R_4$', xy=(650, 580))
+ax.annotate('$R_5$', xy=(420, 180))
+ax.annotate('$R_6$', xy=(520, 610))
+ax.annotate('$R_7$', xy=(310, 310))
+ax.annotate('$R_8$', xy=(360, 620))
+
+# Set limits and remove axes.
+ax.axis((xstart, xend, yend, ystart))
+ax.axis('off')
+fig.tight_layout()
+
+# Save figure.
+if args.save_figures:
+    filepath = figdir / 'qcrit_wx_perspective_view_0008500_post.png'
+    fig.savefig(filepath, dpi=300, bbox_inches='tight')
+
 # --------------------------------------------------------------
 # Post-process lateral view: compute and add inclination angles.
 # --------------------------------------------------------------
