@@ -19,6 +19,13 @@ filepath = simudir / 'output' / 'forces-0.txt'
 solution = rodney.load_force_coefficients(filepath, config)
 rodney.print_stats(label, *rodney.get_stats(solution, limits=(3, 5)))
 
+# Compute and print additional statistics (max of abs).
+mask = numpy.where((solution.t >= 3) & (solution.t <= 5))[0]
+ct, cl, cz = solution.ct[mask], solution.cl[mask], solution.cz[mask]
+print('max(|C_T|)',  numpy.max(numpy.abs(ct)))
+print('max(|C_L|)',  numpy.max(numpy.abs(cl)))
+print('max(|C_Z|)',  numpy.max(numpy.abs(cz)))
+
 # Plot the history of the force coefficients.
 pyplot.rc('font', family='serif', size=12)
 fig, (ax1, ax2, ax3) = pyplot.subplots(ncols=3, figsize=(12.0, 3.0))
