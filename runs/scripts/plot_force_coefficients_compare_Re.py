@@ -1,6 +1,7 @@
 """Plot the instantaneous force coefficients."""
 
 from matplotlib import pyplot
+import numpy
 import pathlib
 
 import rodney
@@ -16,6 +17,8 @@ config = rodney.WingKinematics(Re=100, nt_period=2000)
 filepath = simudir / 'output' / 'forces-0.txt'
 solution = rodney.load_force_coefficients(filepath, config)
 rodney.print_stats(label, *rodney.get_stats(solution, limits=(3, 5)))
+mask = numpy.where((solution.t >= 3) & (solution.t <= 5))[0]
+print('max(|C_T|) =', numpy.max(numpy.abs(solution.ct[mask])))
 plot_kwargs = dict(color='black', linestyle='--')
 
 # Load force coefficients for simulation at Re=200.
@@ -25,6 +28,8 @@ config2 = rodney.WingKinematics(Re=200, nt_period=2000)
 filepath = simudir2 / 'output' / 'forces-0.txt'
 solution2 = rodney.load_force_coefficients(filepath, config2)
 rodney.print_stats(label2, *rodney.get_stats(solution2, limits=(3, 5)))
+mask = numpy.where((solution2.t >= 3) & (solution2.t <= 5))[0]
+print('max(|C_T|) =', numpy.max(numpy.abs(solution2.ct[mask])))
 plot_kwargs2 = dict(color='C3', linestyle='-')
 
 # Load force coefficients for simulation at Re=400.
@@ -34,6 +39,8 @@ config3 = rodney.WingKinematics(Re=400, nt_period=2000)
 filepath = simudir3 / 'output' / 'forces-0.txt'
 solution3 = rodney.load_force_coefficients(filepath, config3)
 rodney.print_stats(label3, *rodney.get_stats(solution3, limits=(3, 5)))
+mask = numpy.where((solution3.t >= 3) & (solution3.t <= 5))[0]
+print('max(|C_T|) =', numpy.max(numpy.abs(solution3.ct[mask])))
 plot_kwargs3 = dict(color='C0', linestyle='-.')
 
 # Plot the history of the force coefficients.
