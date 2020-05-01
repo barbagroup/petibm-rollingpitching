@@ -19,18 +19,20 @@ ct_values = [0.2114, 0.4591, 0.6835, 0.9138, 1.1306, 1.3276, 1.4904]
 eta_values = [0.0296, 0.0758, 0.1236, 0.1635, 0.1814, 0.1772, 0.1603]
 
 pyplot.rc('font', family='serif', size=12)
-fig, ax = pyplot.subplots(figsize=(6.0, 4.0))
+fig, ax = pyplot.subplots(figsize=(5.0, 4.0))
 # Plot cycle-averaged thrust coefficient versus phase difference.
 ax.set_xlabel(r'$\psi$ ($^o$)')
 label = r'$\overline{C_T}$'
 ax.set_ylabel(label)
-ax.plot(psi_values, ct_values, label=label, color='C3', marker='o')
+ax.plot(psi_values, ct_values, label=label,
+        color='black', linestyle='--', linewidth=0.5, marker='o')
 ax.set_ylim(0.0, 3.0)
 # Plot cycle-averaged propulsive efficiency versus phase difference.
 axb = ax.twinx()
 label = r'$\eta$'
 axb.set_ylabel(label)
-axb.plot(psi_values, eta_values, label=label, color='C0', marker='s')
+axb.plot(psi_values, eta_values, label=label,
+         color='black', linestyle='-', linewidth=0.5, marker='s')
 axb.set_ylim(0.0, 0.3)
 
 lines, labels = ax.get_legend_handles_labels()

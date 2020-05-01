@@ -20,18 +20,20 @@ ct_values = [-0.0614, 0.9138, 2.5538, 4.8801, 7.9053]
 eta_values = [-0.0493, 0.1635, 0.1705, 0.1552, 0.1384]
 
 pyplot.rc('font', family='serif', size=12)
-fig, ax = pyplot.subplots(figsize=(6.0, 4.0))
+fig, ax = pyplot.subplots(figsize=(5.0, 4.0))
 # Plot cycle-averaged thrust coefficient versus Strouhal number.
 ax.set_xlabel('St')
 label = r'$\overline{C_T}$'
 ax.set_ylabel(label)
-ax.plot(St_values, ct_values, label=label, color='C3', marker='o')
+ax.plot(St_values, ct_values, label=label,
+        color='black', linestyle='--', linewidth=0.5, marker='o')
 ax.set_ylim(-2.0, 12.0)
 # Plot cycle-averaged propulsive efficiency versus Strouhal number.
 axb = ax.twinx()
 label = r'$\eta$'
 axb.set_ylabel(label)
-axb.plot(St_values, eta_values, label=label, color='C0', marker='s')
+axb.plot(St_values, eta_values, label=label,
+         color='black', linestyle='-', linewidth=0.5, marker='s')
 axb.set_ylim(-0.05, 0.3)
 
 lines, labels = ax.get_legend_handles_labels()
