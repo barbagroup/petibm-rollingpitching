@@ -16,7 +16,7 @@ simudir = maindir / 'run3'
 config = rodney.WingKinematics(Re=200.0, St=0.6, psi=90.0, nt_period=2000)
 filepath = simudir / 'output' / 'forces-0.txt'
 solution = rodney.load_force_coefficients(filepath, config)
-rodney.print_stats(label, *rodney.get_stats(solution, limits=(3, 5)))
+rodney.print_stats(label, *rodney.get_stats(solution, limits=(4, 5)))
 data[label] = dict(config=config, solution=solution,
                    plot_kwargs=dict(linestyle='-', color='C3'))
 
@@ -26,7 +26,7 @@ simudir = maindir / 'run7'
 config = rodney.WingKinematics(Re=200.0, St=0.6, psi=90.0, nt_period=2000)
 filepath = simudir / 'output' / 'forces-0.txt'
 solution = rodney.load_force_coefficients(filepath, config)
-rodney.print_stats(label, *rodney.get_stats(solution, limits=(3, 5)))
+rodney.print_stats(label, *rodney.get_stats(solution, limits=(4, 5)))
 data[label] = dict(config=config, solution=solution,
                    plot_kwargs=dict(linestyle='--', color='black'))
 

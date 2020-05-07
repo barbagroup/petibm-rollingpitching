@@ -17,10 +17,10 @@ simudir = maindir
 config = rodney.WingKinematics(Re=200, nt_period=2000)
 filepath = simudir / 'output' / 'forces-0.txt'
 solution = rodney.load_force_coefficients(filepath, config)
-rodney.print_stats(label, *rodney.get_stats(solution, limits=(3, 5)))
+rodney.print_stats(label, *rodney.get_stats(solution, limits=(4, 5)))
 
 # Compute and print additional statistics (max of abs).
-mask = numpy.where((solution.t >= 3) & (solution.t <= 5))[0]
+mask = numpy.where((solution.t >= 4) & (solution.t <= 5))[0]
 ct, cl, cz = solution.ct[mask], solution.cl[mask], solution.cz[mask]
 print('max(|C_T|)',  numpy.max(numpy.abs(ct)))
 print('max(|C_L|)',  numpy.max(numpy.abs(cl)))

@@ -15,7 +15,7 @@ simudir = maindir / 'Re200_St0.6_AR1.27_psi90'
 config = rodney.WingKinematics(Re=200, AR=1.27, nt_period=2000)
 filepath = simudir / 'output' / 'forces-0.txt'
 solution = rodney.load_force_coefficients(filepath, config)
-rodney.print_stats(label, *rodney.get_stats(solution, limits=(3, 5)))
+rodney.print_stats(label, *rodney.get_stats(solution, limits=(4, 5)))
 plot_kwargs = dict(color='C3', linestyle='-')
 
 # Load force coefficients for simulation with AR=1.91.
@@ -24,7 +24,7 @@ simudir2 = maindir / 'Re200_St0.6_AR1.91_psi90'
 config2 = rodney.WingKinematics(Re=200, AR=1.91, nt_period=2000)
 filepath = simudir2 / 'output' / 'forces-0.txt'
 solution2 = rodney.load_force_coefficients(filepath, config2)
-rodney.print_stats(label2, *rodney.get_stats(solution2, limits=(3, 5)))
+rodney.print_stats(label2, *rodney.get_stats(solution2, limits=(4, 5)))
 plot_kwargs2 = dict(color='black', linestyle='--')
 
 # Load force coefficients for simulation with AR=2.55.
@@ -33,7 +33,7 @@ simudir3 = maindir / 'Re200_St0.6_AR2.55_psi90'
 config3 = rodney.WingKinematics(Re=200, AR=2.55, nt_period=2000)
 filepath = simudir3 / 'output' / 'forces-0.txt'
 solution3 = rodney.load_force_coefficients(filepath, config3)
-rodney.print_stats(label3, *rodney.get_stats(solution3, limits=(3, 5)))
+rodney.print_stats(label3, *rodney.get_stats(solution3, limits=(4, 5)))
 plot_kwargs3 = dict(color='C0', linestyle='-.')
 
 # Plot the history of the force coefficients.
