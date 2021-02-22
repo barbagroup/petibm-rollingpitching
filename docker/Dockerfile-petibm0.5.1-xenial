@@ -9,6 +9,10 @@ RUN apt-get update && \
         build-essential cmake bzip2 git && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Force git to use https instead of ssh. This prevents an error when recursively cloning into rescience-rollingpitching
+RUN git config --global url."https://github.com/".insteadOf git@github.com: && \
+	git config --global url."https://".insteadOf git://
+
 # Install PetIBM app `petibm-rollingpitching`.
 ADD https://api.github.com/repos/mesnardo/petibm-rollingpitching/git/refs/heads/master version.json
 RUN URL=https://github.com/mesnardo/petibm-rollingpitching.git && \
