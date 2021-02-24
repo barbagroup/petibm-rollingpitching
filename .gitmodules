@@ -3,4 +3,4 @@
 	url = https://github.com/jedbrown/cmake-modules.git
 [submodule "rescience-rollingpitching"]
 	path = rescience-rollingpitching
-	url = git@github.com:barbagroup/rescience-rollingpitching.git
+	url = https://github.com/barbagroup/rescience-rollingpitching.git
