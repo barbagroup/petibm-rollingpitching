@@ -24,3 +24,6 @@ __pycache__
 
 # Ignore local files.
 configme.sh
+
+# Ignore pip install egg info.
+*.egg-info

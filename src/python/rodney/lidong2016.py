@@ -4,8 +4,7 @@ import numpy
 import pathlib
 
 
-ROOTDIR = pathlib.Path(__file__).absolute().parents[3]
-DATADIR = ROOTDIR / 'data'
+DATADIR = pathlib.Path(__file__).absolute().parent / 'data'
 
 
 def li_dong_2016_load_ct():
