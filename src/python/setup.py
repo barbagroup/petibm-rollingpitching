@@ -27,6 +27,7 @@ options = dict(name=NAME,
                version=VERSION,
                packages=PACKAGES,
                package_data=PACKAGE_DATA,
+               include_package_data=True,
                requires=REQUIRES)
 
 
