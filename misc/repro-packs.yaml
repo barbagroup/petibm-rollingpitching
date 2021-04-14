@@ -1,0 +1,269 @@
+generate_figures:
+- scripts/generate_all_figures.sh
+- scripts/generate_figures.sh
+- independence/scripts/generate_figures.sh
+- Re200_St0.6_AR1.27_psi90/scripts/generate_figures.sh
+- Re100_St0.6_AR1.27_psi90/scripts/generate_figures.sh
+- Re400_St0.6_AR1.27_psi90/scripts/generate_figures.sh
+- Re200_St0.4_AR1.27_psi90/scripts/generate_figures.sh
+- Re200_St0.8_AR1.27_psi90/scripts/generate_figures.sh
+- Re200_St0.6_AR1.91_psi90/scripts/generate_figures.sh
+- Re200_St0.6_AR2.55_psi90/scripts/generate_figures.sh
+- Re200_St0.6_AR1.27_psi100/scripts/generate_figures.sh
+- Re200_St0.6_AR1.27_psi110/scripts/generate_figures.sh
+- Re200_St0.6_AR1.27_psi120/scripts/generate_figures.sh
+independence/force_coefficients_compare_dx.png:
+- scripts/plot_force_coefficients_compare_dx.py
+- run1/output/forces-0.txt
+- run3/output/forces-0.txt
+- run4/output/forces-0.txt
+independence/force_coefficients_compare_disk.png:
+- scripts/plot_force_coefficients_compare_disk.py
+- run3/output/forces-0.txt
+- run5/output/forces-0.txt
+independence/force_coefficients_compare_dt.png:
+- scripts/plot_force_coefficients_compare_dt.py
+- run3/output/forces-0.txt
+- run6/output/forces-0.txt
+independence/ux_profiles_compare_dx_dt.png:
+- scripts/plot_velocity_profiles_compare_dx_dt.py
+- run3/output/probe[1-5]-u.h5
+- run4/output/probe[1-5]-u.h5
+- run6/output/probe[1-5]-u.h5
+independence/uy_profiles_compare_dx_dt.png:
+- scripts/plot_velocity_profiles_compare_dx_dt.py
+- run3/output/probe[1-5]-v.h5
+- run4/output/probe[1-5]-v.h5
+- run6/output/probe[1-5]-v.h5
+independence/uz_profiles_compare_dx_dt.png:
+- scripts/plot_velocity_profiles_compare_dx_dt.py
+- run3/output/probe[1-5]-w.h5
+- run4/output/probe[1-5]-w.h5
+- run6/output/probe[1-5]-w.h5
+independence/kin_profiles_compare_dx_dt.png:
+- scripts/plot_kinetic_profiles_compare_dx_dt.py
+- run3/output/probe[1-5]-u-kin.h5
+- run3/output/probe[1-5]-v-kin.h5
+- run3/output/probe[1-5]-w-kin.h5
+- run4/output/probe[1-5]-u-kin.h5
+- run4/output/probe[1-5]-v-kin.h5
+- run4/output/probe[1-5]-w-kin.h5
+- run6/output/probe[1-5]-u-kin.h5
+- run6/output/probe[1-5]-v-kin.h5
+- run6/output/probe[1-5]-w-kin.h5
+independence/wx_slice_c_distances.png:
+- scripts/get_wx_distances.py
+- run3/config.yaml
+- run3/output/grid.h5
+- run3/output/0008500.h5
+- run4/config.yaml
+- run4/output/grid.h5
+- run4/output/0008500.h5
+- run6/config.yaml
+- run6/output/grid.h5
+- run6/output/0004250.h5
+independence/wx_slice_f_distances.png:
+- scripts/get_wx_distances.py
+- run3/config.yaml
+- run3/output/grid.h5
+- run3/output/0008500.h5
+- run4/config.yaml
+- run4/output/grid.h5
+- run4/output/0008500.h5
+- run6/config.yaml
+- run6/output/grid.h5
+- run6/output/0004250.h5
+Re200_St0.6_AR1.27_psi90/qcrit_wx_perspective_zoom_view_*_post.png:
+- config.yaml
+- scripts/compute_qcrit.py
+- scripts/compute_wx_cc.py
+- scripts/create_qcrit_wx_cc_xdmf.py
+- scripts/visit_plot_qcrit_wx_zoom.py
+- scripts/process_qcrit_wx_snapshot_zoom.py
+- scripts/annotations/*
+- scripts/visit_perspective_zoom_view3d.yaml
+- output/grid.h5
+- output/0007750.h5
+- output/0007875.h5
+- output/0008000.h5
+- output/0008125.h5
+- output/0008250.h5
+- output/0008375.h5
+- output/0008500.h5
+- output/0008625.h5
+- output/0008750.h5
+- output/0008875.h5
+Re200_St0.6_AR1.27_psi90/qcrit_wx_*_view_0008500_post.png:
+- config.yaml
+- scripts/compute_qcrit.py
+- scripts/compute_wx_cc.py
+- scripts/create_qcrit_wx_cc_xdmf.py
+- scripts/visit_plot_qcrit_wx.py
+- scripts/process_qcrit_wx_snapshot.py
+- scripts/annotations/*
+- scripts/visit_perspective_view3d.yaml
+- scripts/visit_lateral_view3d.yaml
+- scripts/visit_top_view3d.yaml
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.6_AR1.27_psi90/wx_slice_*.png:
+- config.yaml
+- scripts/plot_wx_slices.py
+- scripts/wx_slices_annotations.yaml
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.6_AR1.27_psi90/force_coefficients.png:
+- scripts/plot_force_coefficients.py
+- output/forces-0.txt
+Re200_St0.4_AR1.27_psi90/qcrit_wx_*_view_0008500_post.png:
+- config.yaml
+- scripts/compute_qcrit.py
+- scripts/compute_wx_cc.py
+- scripts/create_qcrit_wx_cc_xdmf.py
+- scripts/visit_plot_qcrit_wx.py
+- scripts/process_qcrit_wx_snapshot.py
+- scripts/visit_perspective_view3d.yaml
+- scripts/visit_lateral_view3d.yaml
+- scripts/visit_top_view3d.yaml
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.8_AR1.27_psi90/qcrit_wx_*_view_0008500_post.png:
+- config.yaml
+- scripts/compute_qcrit.py
+- scripts/compute_wx_cc.py
+- scripts/create_qcrit_wx_cc_xdmf.py
+- scripts/visit_plot_qcrit_wx.py
+- scripts/process_qcrit_wx_snapshot.py
+- scripts/visit_perspective_view3d.yaml
+- scripts/visit_lateral_view3d.yaml
+- scripts/visit_top_view3d.yaml
+- output/grid.h5
+- output/0008500.h5
+efficiency_compare_St.png:
+- scripts/plot_efficiency_compare_St.py
+Re100_St0.6_AR1.27_psi90/qcrit_wx_perspective_zoom_view_0008500_post.png:
+- config.yaml
+- scripts/compute_qcrit.py
+- scripts/compute_wx_cc.py
+- scripts/create_qcrit_wx_cc_xdmf.py
+- scripts/visit_plot_qcrit_wx_zoom.py
+- scripts/process_qcrit_wx_snapshot_zoom.py
+- scripts/annotations/*
+- scripts/visit_perspective_zoom_view3d.yaml
+- output/grid.h5
+- output/0008500.h5
+Re400_St0.6_AR1.27_psi90/qcrit_wx_perspective_zoom_view_0008500_post.png:
+- config.yaml
+- scripts/compute_qcrit.py
+- scripts/compute_wx_cc.py
+- scripts/create_qcrit_wx_cc_xdmf.py
+- scripts/visit_plot_qcrit_wx_zoom.py
+- scripts/process_qcrit_wx_snapshot_zoom.py
+- scripts/annotations/*
+- scripts/visit_perspective_zoom_view3d.yaml
+- output/grid.h5
+- output/0008500.h5
+force_coefficients_compare_Re.png:
+- scripts/plot_force_coefficients_compare_Re.py
+- Re100_St0.6_AR1.27_psi90/output/forces-0.txt
+- Re200_St0.6_AR1.27_psi90/output/forces-0.txt
+- Re400_St0.6_AR1.27_psi90/output/forces-0.txt
+Re200_St0.6_AR1.91_psi90/qcrit_wx_perspective_zoom_view_0008500_post.png:
+- config.yaml
+- scripts/compute_qcrit.py
+- scripts/compute_wx_cc.py
+- scripts/create_qcrit_wx_cc_xdmf.py
+- scripts/visit_plot_qcrit_wx_zoom.py
+- scripts/process_qcrit_wx_snapshot_zoom.py
+- scripts/qcrit_wx_snapshot_zoom.yaml
+- scripts/visit_perspective_zoom_view3d.yaml
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.6_AR2.55_psi90/qcrit_wx_perspective_zoom_view_0008500_post.png:
+- scripts/compute_qcrit.py
+- scripts/compute_wx_cc.py
+- scripts/create_qcrit_wx_cc_xdmf.py
+- scripts/visit_plot_qcrit_wx_zoom.py
+- scripts/process_qcrit_wx_snapshot_zoom.py
+- scripts/visit_perspective_zoom_view3d.yaml
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.6_AR1.27_psi90/wx_slice_yz_0008500.png:
+- config.yaml
+- scripts/plot_vorticity_slices.py
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.6_AR1.91_psi90/wx_slice_yz_0008500.png:
+- config.yaml
+- scripts/plot_vorticity_slices.py
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.6_AR2.55_psi90/wx_slice_yz_0008500.png:
+- config.yaml
+- scripts/plot_vorticity_slices.py
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.6_AR1.27_psi90/wz_slice_xy_0008500.png:
+- config.yaml
+- scripts/plot_vorticity_slices.py
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.6_AR1.91_psi90/wz_slice_xy_0008500.png:
+- config.yaml
+- scripts/plot_vorticity_slices.py
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.6_AR2.55_psi90/wz_slice_xy_0008500.png:
+- config.yaml
+- scripts/plot_vorticity_slices.py
+- output/grid.h5
+- output/0008500.h5
+force_coefficients_compare_AR.png:
+- scripts/plot_force_coefficients_compare_AR.py
+- Re200_St0.6_AR1.27_psi90/output/forces-0.txt
+- Re200_St0.6_AR1.91_psi90/output/forces-0.txt
+- Re200_St0.6_AR2.55_psi90/output/forces-0.txt
+Re200_St0.6_AR1.27_psi100/qcrit_wx_*_view_0008500_post.png:
+- config.yaml
+- scripts/compute_qcrit.py
+- scripts/compute_wx_cc.py
+- scripts/create_qcrit_wx_cc_xdmf.py
+- scripts/visit_plot_qcrit_wx.py
+- scripts/process_qcrit_wx_snapshot.py
+- scripts/visit_perspective_view3d.yaml
+- scripts/visit_lateral_view3d.yaml
+- scripts/visit_top_view3d.yaml
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.6_AR1.27_psi110/qcrit_wx_*_view_0008500_post.png:
+- config.yaml
+- scripts/compute_qcrit.py
+- scripts/compute_wx_cc.py
+- scripts/create_qcrit_wx_cc_xdmf.py
+- scripts/visit_plot_qcrit_wx.py
+- scripts/process_qcrit_wx_snapshot.py
+- scripts/visit_perspective_view3d.yaml
+- scripts/visit_lateral_view3d.yaml
+- scripts/visit_top_view3d.yaml
+- output/grid.h5
+- output/0008500.h5
+Re200_St0.6_AR1.27_psi120/qcrit_wx_*_view_0008500_post.png:
+- config.yaml
+- scripts/compute_qcrit.py
+- scripts/compute_wx_cc.py
+- scripts/create_qcrit_wx_cc_xdmf.py
+- scripts/visit_plot_qcrit_wx.py
+- scripts/process_qcrit_wx_snapshot.py
+- scripts/visit_perspective_view3d.yaml
+- scripts/visit_lateral_view3d.yaml
+- scripts/visit_top_view3d.yaml
+- output/grid.h5
+- output/0008500.h5
+force_coefficients_compare_psi.png:
+- scripts/plot_force_coefficients_compare_psi.py
+- Re200_St0.6_AR1.27_psi90/output/forces-0.txt
+- Re200_St0.6_AR1.27_psi100/output/forces-0.txt
+- Re200_St0.6_AR1.27_psi110/output/forces-0.txt
+- Re200_St0.6_AR1.27_psi120/output/forces-0.txt
+efficiency_compare_psi.png:
+- scripts/plot_efficiency_compare_psi.py

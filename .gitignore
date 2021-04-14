@@ -27,3 +27,6 @@ configme.sh
 
 # Ignore pip install egg info.
 *.egg-info
+
+# Ignore repro-packs folder.
+repro-packs
