@@ -79,8 +79,8 @@ Compute the vorticity components every 125 time steps between time-step indices 
 * CLI:
 
 ```shell
-export PATH="<local-petibm-installation-dir>/bin":$PATH
-petibm-vorticity -bg 7750 -ed 8875 -step 125
+docker pull barbagroup/petibm:0.5.1-GPU-OpenMPI-xenial
+docker run --rm -it -v $(pwd):/postprocessing barbagroup/petibm:0.5.1-GPU-OpenMPI-xenial petibm-vorticity -directory /postprocessing -bg 7750 -ed 8875 -step 125
 ```
 
 ### Plot annotated y/z slices of the streamwise vorticity field at t/T = 4.25
