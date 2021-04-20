@@ -1,0 +1,35 @@
+run1:
+Cycle-averaged thrust: 0.17327590629527365
+Cycle-averaged thrust coefficient: 0.44236900592216516
+Cycle-averaged hydrodynamic power: 1.7294605021185374
+Propulsive efficiency: 0.1001907277344674
+
+run2:
+Cycle-averaged thrust: 0.3154136020500265
+Cycle-averaged thrust coefficient: 0.8052429479458767
+Cycle-averaged hydrodynamic power: 2.131525775492799
+Propulsive efficiency: 0.14797550453130423
+
+run3:
+Cycle-averaged thrust: 0.35792053502224613
+Cycle-averaged thrust coefficient: 0.9137620726514089
+Cycle-averaged hydrodynamic power: 2.1893970233861335
+Propulsive efficiency: 0.16347904523441997
+
+run4:
+Cycle-averaged thrust: 0.38620604563028216
+Cycle-averaged thrust coefficient: 0.9859742657785675
+Cycle-averaged hydrodynamic power: 2.2359258189775204
+Propulsive efficiency: 0.17272757546441883
+
+run6:
+Cycle-averaged thrust: 0.35983955293852926
+Cycle-averaged thrust coefficient: 0.9186612768519419
+Cycle-averaged hydrodynamic power: 2.1992677585693925
+Propulsive efficiency: 0.16361789124422133
+
+run7:
+Cycle-averaged thrust: 0.3579205926438509
+Cycle-averaged thrust coefficient: 0.9137622197579084
+Cycle-averaged hydrodynamic power: 2.1893972688088112
+Propulsive efficiency: 0.1634790532275512

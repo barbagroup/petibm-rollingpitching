@@ -1,0 +1,66 @@
+Re200_St0.4_AR1.27_psi90:
+Cycle-averaged thrust: -0.024057169479296144
+Cycle-averaged thrust coefficient: -0.061417345177363365
+Cycle-averaged hydrodynamic power: 0.48763181534184896
+Propulsive efficiency: -0.04933470032596443
+
+Re200_St0.6_AR1.27_psi90:
+Cycle-averaged thrust: 0.3579205163325428
+Cycle-averaged thrust coefficient: 0.913762024937069
+Cycle-averaged hydrodynamic power: 2.1893965959812167
+Propulsive efficiency: 0.16347906861165754
+
+Re200_St0.8_AR1.27_psi90:
+Cycle-averaged thrust: 1.0003222041859
+Cycle-averaged thrust coefficient: 2.553797285085422
+Cycle-averaged hydrodynamic power: 5.868209410178718
+Propulsive efficiency: 0.17046463993782984
+
+Re200_St1.0_AR1.27_psi90:
+Cycle-averaged thrust: 1.9115322224997848
+Cycle-averaged thrust coefficient: 4.880093413647793
+Cycle-averaged hydrodynamic power: 12.314375160095988
+Propulsive efficiency: 0.1552277072647578
+
+Re200_St1.2_AR1.27_psi90:
+Cycle-averaged thrust: 3.0964943638079165
+Cycle-averaged thrust coefficient: 7.9052717879142245
+Cycle-averaged hydrodynamic power: 22.374892051522178
+Propulsive efficiency: 0.13839147722713863
+
+Re200_St0.6_AR1.27_psi60:
+Cycle-averaged thrust: 0.08281561673890445
+Cycle-averaged thrust coefficient: 0.2114261747919622
+Cycle-averaged hydrodynamic power: 2.795667557257885
+Propulsive efficiency: 0.029622841429734828
+
+Re200_St0.6_AR1.27_psi70:
+Cycle-averaged thrust: 0.17984367182053476
+Cycle-averaged thrust coefficient: 0.4591363451827586
+Cycle-averaged hydrodynamic power: 2.3722659801294435
+Propulsive efficiency: 0.07581092226880964
+
+Re200_St0.6_AR1.27_psi80:
+Cycle-averaged thrust: 0.26773611508485845
+Cycle-averaged thrust coefficient: 0.6835235296806054
+Cycle-averaged hydrodynamic power: 2.1666618053097997
+Propulsive efficiency: 0.1235707919107275
+
+Re200_St0.6_AR1.27_psi100:
+Cycle-averaged thrust: 0.442837062751905
+Cycle-averaged thrust coefficient: 1.1305518200622164
+Cycle-averaged hydrodynamic power: 2.441655683369111
+Propulsive efficiency: 0.18136753096196498
+
+Re200_St0.6_AR1.27_psi110:
+Cycle-averaged thrust: 0.5200067006220521
+Cycle-averaged thrust coefficient: 1.327563953611921
+Cycle-averaged hydrodynamic power: 2.933889738059097
+Propulsive efficiency: 0.17724139182069618
+
+Re200_St0.6_AR1.27_psi120:
+Cycle-averaged thrust: 0.5837727691291446
+Cycle-averaged thrust coefficient: 1.4903571136083176
+Cycle-averaged hydrodynamic power: 3.6411936680450645
+Propulsive efficiency: 0.16032455901818832
+
