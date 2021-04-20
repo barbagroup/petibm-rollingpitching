@@ -12,14 +12,22 @@ The present directory contains all the input files and post-processing scripts, 
 
 ## Post-processing steps
 
-Activate the conda environment `py36-rolling` and set the `PYTHONPATH` environment variable:
+To generate the figures of the manuscript:
 
 ```shell
-conda activate py36-rolling
-export PYTHONPATH=$REPO_DIR/src/python
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash /postprocessing/scripts/generate_all_figures.sh
 ```
 
-where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpitching`.
+Alternatively, you can log into the Docker container and generate figure by figure:
+
+```shell
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash
+cd /postprocessing  # inside the container
+```
+
+then run the instructions displayed in the following sub-sections.
 
 ### History of the force coefficients (comparing Reynolds numbers)
 

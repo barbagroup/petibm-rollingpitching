@@ -17,14 +17,22 @@ The present directory contains all the input files and post-processing scripts, 
 
 ## Post-processing steps
 
-Activate the conda environment `py36-rolling` and set the `PYTHONPATH` environment variable:
+To generate the figures of the manuscript:
 
 ```shell
-conda activate py36-rolling
-export PYTHONPATH=$REPO_DIR/src/python
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash /postprocessing/scripts/generate_figures.sh
 ```
 
-where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpitching`.
+Alternatively, you can log into the Docker container and generate figure by figure:
+
+```shell
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash
+cd /postprocessing  # inside the container
+```
+
+then run the instructions displayed in the following sub-sections.
 
 ### History of the force coefficients (comparing grid-cell widths)
 
@@ -34,7 +42,11 @@ where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpi
   * `run3`
   * `run4`
 * Output: `figures/force_coefficients_compare_dx.png`
-* CLI: `python scripts/plot_force_coefficients_compare_dx.py`
+* CLI:
+
+  ```shell
+  python scripts/plot_force_coefficients_compare_dx.py
+  ```
 
 ![fig:force_coefficients_compare_dx](figures/force_coefficients_compare_dx.png)
 
@@ -45,7 +57,11 @@ where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpi
   * `run3`
   * `run6`
 * Output: `figures/force_coefficients_compare_dt.png`
-* CLI: `python scripts/plot_force_coefficients_compare_dt.py`
+* CLI:
+
+  ```shell
+  python scripts/plot_force_coefficients_compare_dt.py
+  ```
 
 ![fig:force_coefficients_compare_dt](figures/force_coefficients_compare_dt.png)
 
@@ -56,7 +72,11 @@ where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpi
   * `run3`
   * `run5`
 * Output: `figures/force_coefficients_compare_disk.png`
-* CLI: `python scripts/plot_force_coefficients_compare_disk.py`
+* CLI:
+
+  ```shell
+  python scripts/plot_force_coefficients_compare_disk.py
+  ```
 
 ![fig:force_coefficients_compare_disk](figures/force_coefficients_compare_disk.png)
 
@@ -67,7 +87,11 @@ where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpi
   * `run3`
   * `run7`
 * Output: `figures/force_coefficients_compare_atol.png`
-* CLI: `python scripts/plot_force_coefficients_compare_atol.py`
+* CLI:
+
+  ```shell
+  python scripts/plot_force_coefficients_compare_atol.py
+  ```
 
 ![fig:force_coefficients_compare_atol](figures/force_coefficients_compare_atol.png)
 
@@ -82,7 +106,11 @@ where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpi
   * `figures/ux_profiles_compare_dx_dt.png`
   * `figures/uy_profiles_compare_dx_dt.png`
   * `figures/uz_profiles_compare_dx_dt.png`
-* CLI: `python scripts/plot_velocity_profiles_compare_dx_dt.py`
+* CLI:
+
+  ```shell
+  python scripts/plot_velocity_profiles_compare_dx_dt.py
+  ```
 
 Example: `figures/ux_profiles_compare_dx_dt.png`
 
@@ -96,7 +124,11 @@ Example: `figures/ux_profiles_compare_dx_dt.png`
   * `run4`
   * `run6`
 * Output: `figures/kin_profiles_compare_dx_dt.png`
-* CLI: `python scripts/plot_kinetic_profiles_compare_dx_dt.py`
+* CLI:
+
+  ```shell
+  python scripts/plot_kinetic_profiles_compare_dx_dt.py
+  ```
 
 ![fig:kin_profiles_dx_dt](figures/kin_profiles_compare_dx_dt.png)
 
@@ -110,7 +142,11 @@ Example: `figures/ux_profiles_compare_dx_dt.png`
   * `figures/ux_profiles_compare_disk.png`
   * `figures/uy_profiles_compare_disk.png`
   * `figures/uz_profiles_compare_disk.png`
-* CLI: `python scripts/plot_velocity_profiles_compare_disk.py`
+* CLI:
+
+  ```shell
+  python scripts/plot_velocity_profiles_compare_disk.py
+  ```
 
 Example: `figures/ux_profiles_compare_disk.png`
 
@@ -123,7 +159,11 @@ Example: `figures/ux_profiles_compare_disk.png`
   * `run3`
   * `run5`
 * Output: `figures/kin_profiles_compare_disk.png`
-* CLI: `python scripts/plot_kinetic_profiles_compare_disk.py`
+* CLI:
+
+  ```shell
+  python scripts/plot_kinetic_profiles_compare_disk.py
+  ```
 
 ![fig:kin_profiles_disk](figures/kin_profiles_compare_disk.png)
 
@@ -134,7 +174,11 @@ Example: `figures/ux_profiles_compare_disk.png`
 * Output:
   * `figures/wx_slice_c_distances.png`
   * `figures/wx_slice_f_distances.png`
-* CLI: `python scripts/get_wx_distances.py`
+* CLI:
+
+  ```shell
+  python scripts/get_wx_distances.py
+  ```
 
 Example: `figures/wx_slice_c_distances.png`
 

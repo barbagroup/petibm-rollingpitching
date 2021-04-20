@@ -12,14 +12,15 @@ Simulation of the three-dimensional flow around a pitching and rolling circular 
 
 ## Pre-processing steps
 
-Activate the conda environment `py36-rolling` and set the `PYTHONPATH` environment variable:
+Create a Docker container:
 
 ```shell
-conda activate py36-rolling
-export PYTHONPATH=$REPO_DIR/src/python
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash
+cd /postprocessing  # inside the container
 ```
 
-where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpitching`.
+and run the instructions displayed in the following sub-sections.
 
 ### Create the body file for the wing
 
@@ -27,9 +28,9 @@ where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpi
 * Output: `wing.body`
 * CLI:
 
-```shell
-python scripts/create_body.py
-```
+  ```shell
+  python scripts/create_body.py
+  ```
 
 ## Submit the simulation job
 
@@ -48,29 +49,30 @@ The simulation computed 10000 time steps in about 12.8 hours on 2 `small-gpu` no
 
 ## Post-processing steps
 
-Activate the conda environment `py36-rolling` and set the `PYTHONPATH` environment variable:
+Create a Docker container:
 
 ```shell
-conda activate py36-rolling
-export PYTHONPATH=$REPO_DIR/src/python
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash
+cd /postprocessing  # inside the container
 ```
 
-where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpitching`.
+and run the instructions displayed in the following sub-sections.
 
 ### Compute propulsive performances
 
 * Script: `scripts/get_propulsive_efficiency.py`
 * CLI:
 
-```shell
-python scripts/get_propulsive_efficiency.py
-```
+  ```shell
+  python scripts/get_propulsive_efficiency.py
+  ```
 
 * Output:
 
-```ascii
-Cycle-averaged thrust: 0.3579205926438509
-Cycle-averaged thrust coefficient: 0.9137622197579084
-Cycle-averaged hydrodynamic power: 2.1893972688088112
-Propulsive efficiency: 0.1634790532275512
-```
+  ```ascii
+  Cycle-averaged thrust: 0.3579205926438509
+  Cycle-averaged thrust coefficient: 0.9137622197579084
+  Cycle-averaged hydrodynamic power: 2.1893972688088112
+  Propulsive efficiency: 0.1634790532275512
+  ```
