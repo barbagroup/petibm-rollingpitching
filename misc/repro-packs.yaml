@@ -140,6 +140,7 @@ Re200_St0.8_AR1.27_psi90/qcrit_wx_*_view_0008500_post.png:
 - output/grid.h5
 - output/0008500.h5
 efficiency_compare_St.png:
+- data/propulsive_efficiency.dat
 - scripts/plot_efficiency_compare_St.py
 Re100_St0.6_AR1.27_psi90/qcrit_wx_perspective_zoom_view_0008500_post.png:
 - config.yaml
@@ -266,4 +267,5 @@ force_coefficients_compare_psi.png:
 - Re200_St0.6_AR1.27_psi110/output/forces-0.txt
 - Re200_St0.6_AR1.27_psi120/output/forces-0.txt
 efficiency_compare_psi.png:
+- data/propulsive_efficiency.dat
 - scripts/plot_efficiency_compare_psi.py
