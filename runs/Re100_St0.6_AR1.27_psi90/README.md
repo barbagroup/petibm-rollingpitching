@@ -13,14 +13,15 @@ Simulation of the three-dimensional flow around a pitching and rolling circular 
 
 ## Pre-processing steps
 
-Activate the conda environment `py36-rolling` and set the `PYTHONPATH` environment variable:
+Create a Docker container:
 
 ```shell
-conda activate py36-rolling
-export PYTHONPATH=$REPO_DIR/src/python
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash
+cd /postprocessing  # inside the container
 ```
 
-where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpitching`.
+and run the instructions displayed in the following sub-sections.
 
 ### Create the body file for the wing
 
@@ -28,9 +29,9 @@ where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpi
 * Output: `wing.body`
 * CLI:
 
-```shell
-python scripts/create_body.py
-```
+  ```shell
+  python scripts/create_body.py
+  ```
 
 ## Submit the simulation job
 
@@ -49,14 +50,15 @@ The simulation computed 10000 time steps in about 11 hours on 2 `small-gpu` node
 
 ## Post-processing steps
 
-Activate the conda environment `py36-rolling` and set the `PYTHONPATH` environment variable:
+Create a Docker container:
 
 ```shell
-conda activate py36-rolling
-export PYTHONPATH=$REPO_DIR/src/python
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash
+cd /postprocessing  # inside the container
 ```
 
-where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpitching`.
+and run the instructions displayed in the following sub-sections.
 
 ### Compute vorticity components at t/T = 4.25
 
@@ -64,30 +66,29 @@ Compute the vorticity components at time-step index 8500.
 
 * CLI:
 
-```shell
-export PATH="<local-petibm-installation-dir>/bin":$PATH
-petibm-vorticity -bg 8500 -ed 8500 -step 500
-```
+  ```shell
+  petibm-vorticity -bg 8500 -ed 8500 -step 500
+  ```
 
 ### Visualize the wake topology
 
 1. Compute the cell-centered streamwise vorticity and Q-criterion at t/T = 4.25
 
-```shell
-python scripts/compute_wx_cc.py
-python scripts/compute_qcrit.py
-python scripts/create_qcrit_wx_cc_xdmf.py
-```
+   ```shell
+   python scripts/compute_wx_cc.py
+   python scripts/compute_qcrit.py
+   python scripts/create_qcrit_wx_cc_xdmf.py
+   ```
 
 2. Plot the wake topology near the wing at t/T = 4.25 with VisIt
 
-```shell
-export VISIT_DIR=/usr/local/visit/2.12.1
-export VISIT_ARCH=linux-x86_64
-python2 scripts/visit_plot_qcrit_wx_zoom.py
-# Annotate images:
-python process_qcrit_wx_snapshot_zoom.py
-```
+   ```shell
+   conda activate py27-visit
+   python2 scripts/visit_plot_qcrit_wx_zoom.py
+   # Annotate images:
+   python process_qcrit_wx_snapshot_zoom.py
+   conda deactivate
+   ```
 
 * Output:
   * `figures/qcrit_wx_perspective_zoom_view_0008500.png`

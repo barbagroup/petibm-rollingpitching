@@ -13,14 +13,15 @@ Simulation of the three-dimensional flow around a pitching and rolling circular 
 
 ## Pre-processing steps
 
-Activate the conda environment `py36-rolling` and set the `PYTHONPATH` environment variable:
+Create a Docker container:
 
 ```shell
-conda activate py36-rolling
-export PYTHONPATH=$REPO_DIR/src/python
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash
+cd /postprocessing  # inside the container
 ```
 
-where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpitching`.
+and run the instructions displayed in the following sub-sections.
 
 ### Create the body file for the wing
 
@@ -28,9 +29,9 @@ where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpi
 * Output: `wing.body`
 * CLI:
 
-```shell
-python scripts/create_body.py
-```
+  ```shell
+  python scripts/create_body.py
+  ```
 
 ## Submit the simulation job
 
@@ -49,14 +50,15 @@ The simulation computed 10000 time steps in about 13.8 hours on 2 `small-gpu` no
 
 ## Post-processing steps
 
-Activate the conda environment `py36-rolling` and set the `PYTHONPATH` environment variable:
+Create a Docker container:
 
 ```shell
-conda activate py36-rolling
-export PYTHONPATH=$REPO_DIR/src/python
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash
+cd /postprocessing  # inside the container
 ```
 
-where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpitching`.
+and run the instructions displayed in the following sub-sections.
 
 ### Plot the history of the force coefficients
 
@@ -66,9 +68,9 @@ Plot the history of the thrust, lift, and spanwise coefficients over two flappin
 * Output: `figures/force_coefficients.png`
 * CLI:
 
-```shell
-python scripts/plot_force_coefficients.py
-```
+  ```shell
+  python scripts/plot_force_coefficients.py
+  ```
 
 ![fig:force_coefficients](figures/force_coefficients.png)
 
@@ -78,10 +80,9 @@ Compute the vorticity components every 125 time steps between time-step indices 
 
 * CLI:
 
-```shell
-docker pull barbagroup/petibm:0.5.1-GPU-OpenMPI-xenial
-docker run --rm -it -v $(pwd):/postprocessing barbagroup/petibm:0.5.1-GPU-OpenMPI-xenial petibm-vorticity -directory /postprocessing -bg 7750 -ed 8875 -step 125
-```
+  ```shell
+  petibm-vorticity -bg 7750 -ed 8875 -step 125
+  ```
 
 ### Plot annotated y/z slices of the streamwise vorticity field at t/T = 4.25
 
@@ -89,9 +90,9 @@ docker run --rm -it -v $(pwd):/postprocessing barbagroup/petibm:0.5.1-GPU-OpenMP
 * Output: `figures/wx_slice_*.png`
 * CLI:
 
-```shell
-python scripts/plot_wx_slices.py
-```
+  ```shell
+  python scripts/plot_wx_slices.py
+  ```
 
 Example: `wx_slice_h.png`
 
@@ -101,21 +102,21 @@ Example: `wx_slice_h.png`
 
 1. Compute the cell-centered streamwise vorticity and Q-criterion at selected time-step indices
 
-```shell
-python scripts/compute_wx_cc.py
-python scripts/compute_qcrit.py
-python scripts/create_qcrit_wx_cc_xdmf.py
-```
+   ```shell
+   python scripts/compute_wx_cc.py
+   python scripts/compute_qcrit.py
+   python scripts/create_qcrit_wx_cc_xdmf.py
+   ```
 
 2. Plot the wake topology (side, lateral, and perspective views) at t/T = 4.25 with VisIt
 
-```shell
-export VISIT_DIR=/usr/local/visit/2.12.1
-export VISIT_ARCH=linux-x86_64
-python2 scripts/visit_plot_qcrit_wx.py
-# Annotate images
-python scripts/process_qcrit_wx_snapshot.py
-```
+   ```shell
+   conda activate py27-visit
+   python scripts/visit_plot_qcrit_wx.py
+   # Annotate images
+   python scripts/process_qcrit_wx_snapshot.py
+   conda deactivate
+   ```
 
 * Output:
   * `figures/qcrit_wx_perspective_view_0008500.png`
@@ -130,13 +131,13 @@ Example: `figures/qcrit_wx_lateral_view_0008500_post.png`
 
 3. Plot the wake topology near the wing at multiple time values with VisIt
 
-```shell
-export VISIT_DIR=/usr/local/visit/2.12.1
-export VISIT_ARCH=linux-x86_64
-python2 scripts/visit_plot_qcrit_wx_zoom.py
-# Annotate images:
-python process_qcrit_wx_snapshot_zoom.py
-```
+   ```shell
+   conda activate py27-visit
+   python scripts/visit_plot_qcrit_wx_zoom.py
+   # Annotate images:
+   python process_qcrit_wx_snapshot_zoom.py
+   conda deactivate
+   ```
 
 * Output:
   * `figures/qcrit_wx_perspective_zoom_view_*.png`
@@ -151,15 +152,15 @@ Example: `figures/qcrit_wx_perspective_zoom_view_0008750_post.png`
 * Script: `scripts/get_propulsive_efficiency.py`
 * CLI:
 
-```shell
-python scripts/get_propulsive_efficiency.py
-```
+  ```shell
+  python scripts/get_propulsive_efficiency.py
+  ```
 
 * Output:
 
-```ascii
-Cycle-averaged thrust: 0.3579205163325428
-Cycle-averaged thrust coefficient: 0.913762024937069
-Cycle-averaged hydrodynamic power: 2.1893965959812167
-Propulsive efficiency: 0.16347906861165754
-```
+  ```ascii
+  Cycle-averaged thrust: 0.3579205163325428
+  Cycle-averaged thrust coefficient: 0.913762024937069
+  Cycle-averaged hydrodynamic power: 2.1893965959812167
+  Propulsive efficiency: 0.16347906861165754
+  ```

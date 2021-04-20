@@ -13,14 +13,15 @@ Simulation of the three-dimensional flow around a pitching and rolling circular 
 
 ## Pre-processing steps
 
-Activate the conda environment `py36-rolling` and set the `PYTHONPATH` environment variable:
+Create a Docker container:
 
 ```shell
-conda activate py36-rolling
-export PYTHONPATH=$REPO_DIR/src/python
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash
+cd /postprocessing  # inside the container
 ```
 
-where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpitching`.
+and run the instructions displayed in the following sub-sections.
 
 ### Create the body file for the wing
 
@@ -28,9 +29,9 @@ where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpi
 * Output: `wing.body`
 * CLI:
 
-```shell
-python scripts/create_body.py
-```
+  ```shell
+  python scripts/create_body.py
+  ```
 
 ## Submit the simulation job
 
@@ -49,14 +50,15 @@ The simulation computed 10000 time steps in about 9.8 hours on 2 `small-gpu` nod
 
 ## Post-processing steps
 
-Activate the conda environment `py36-rolling` and set the `PYTHONPATH` environment variable:
+Create a Docker container:
 
 ```shell
-conda activate py36-rolling
-export PYTHONPATH=$REPO_DIR/src/python
+cd <directory-of-this-README>
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash
+cd /postprocessing  # inside the container
 ```
 
-where `$REPO_DIR` is the directory of the local Git repository `petibm-rollingpitching`.
+and run the instructions displayed in the following sub-sections.
 
 ### Compute vorticity components at t/T = 4.25
 
@@ -64,30 +66,29 @@ Compute the vorticity components at time-step index 8500.
 
 * CLI:
 
-```shell
-export PATH="<local-petibm-installation-dir>/bin":$PATH
-petibm-vorticity -bg 8500 -ed 8500 -step 500
-```
+  ```shell
+  petibm-vorticity -bg 8500 -ed 8500 -step 500
+  ```
 
 ### Visualize the wake topology
 
 1. Compute the cell-centered streamwise vorticity and Q-criterion at t/T = 4.25
 
-```shell
-python scripts/compute_wx_cc.py
-python scripts/compute_qcrit.py
-python scripts/create_qcrit_wx_cc_xdmf.py
-```
+   ```shell
+   python scripts/compute_wx_cc.py
+   python scripts/compute_qcrit.py
+   python scripts/create_qcrit_wx_cc_xdmf.py
+   ```
 
 2. Plot the wake topology (side, lateral, and perspective views) at t/T = 4.25 with VisIt
 
-```shell
-export VISIT_DIR=/usr/local/visit/2.12.1
-export VISIT_ARCH=linux-x86_64
-python2 scripts/visit_plot_qcrit_wx.py
-# Annotate images
-python scripts/process_qcrit_wx_snapshot.py
-```
+   ```shell
+   conda activate py27-visit
+   python scripts/visit_plot_qcrit_wx.py
+   # Annotate images
+   python scripts/process_qcrit_wx_snapshot.py
+   conda deactivate
+   ```
 
 * Output:
   * `figures/qcrit_wx_perspective_view_0008500.png`
@@ -105,15 +106,15 @@ Example: `figures/qcrit_wx_lateral_view_0008500_post.png`
 * Script: `scripts/get_propulsive_efficiency.py`
 * CLI:
 
-```shell
-python scripts/get_propulsive_efficiency.py
-```
+  ```shell
+  python scripts/get_propulsive_efficiency.py
+  ```
 
 * Output:
 
-```ascii
-Cycle-averaged thrust: -0.024057169479296144
-Cycle-averaged thrust coefficient: -0.061417345177363365
-Cycle-averaged hydrodynamic power: 0.48763181534184896
-Propulsive efficiency: -0.04933470032596443
-```
+  ```ascii
+  Cycle-averaged thrust: -0.024057169479296144
+  Cycle-averaged thrust coefficient: -0.061417345177363365
+  Cycle-averaged hydrodynamic power: 0.48763181534184896
+  Propulsive efficiency: -0.04933470032596443
+  ```

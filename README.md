@@ -13,56 +13,32 @@ This repository contains a computational replication of the scientific findings 
 
 * Li, C., & Dong, H. (2016). Three-dimensional wake topology and propulsive performance of low-aspect-ratio pitching-rolling plates. Physics of Fluids, 28(7), 071901.
 
-## Dependencies
-
-* [PetIBM](https://github.com/barbagroup/PetIBM) (0.5.1)
-* [PyDistMesh](https://github.com/bfroehle/pydistmesh) (1.2)
-* [PetibmPy](https://github.com/mesnardo/petibmpy) (0.2)
-* [VisIt](https://wci.llnl.gov/simulation/computer-codes/visit) (2.12.1)
-
 ## Contents
 
 * `rescience-rollingpitching`: manuscript to be submitted to [ReScience C](https://rescience.github.io/)
 * `docker`: Dockerfiles used to build Docker images (shared on [DockerHub](https://hub.docker.com/repository/docker/mesnardo/petibm-rollingpitching))
 * `singularity`: Singularity recipe files to build images (shared on [Singularity Hub](https://singularity-hub.org/collections/2855))
-* `src`: PetIBM application source files for the 3D pitching and rolling plate, and Python pre- and post-processing files.
+* `src`: PetIBM application source files for the 3D pitching and rolling plate, and Python data-processing package
 * `runs`: directory with inputs files of the PetIBM simulations (independence and parametric study)
-* `data`: digitized data from Li & Dong (2016) used for comparison with the PetIBM results
 
-## Conda environment for pre- and post-processing
+## Dependencies
 
-* Install PetibmPy in a conda environment
+* [PetIBM](https://github.com/barbagroup/PetIBM) (0.5.1)
+* [PETSc](https://www.mcs.anl.gov/petsc/download/index.html) (3.12.2)
+* [PyDistMesh](https://github.com/bfroehle/pydistmesh) (1.2)
+* [PetibmPy](https://github.com/mesnardo/petibmpy) (0.2)
+* [VisIt](https://wci.llnl.gov/simulation/computer-codes/visit) (2.12.3)
 
-```shell
-cd sfw
-wget https://github.com/mesnardo/petibmpy/archive/v0.2.tar.gz
-tar -xzf v0.2.tar.gz
-cd petibmpy-0.2
-conda env create --name=py36-rolling --file=environment.yaml
-conda activate py36-rolling
-python setup.py install
-```
+## Reproducibility packages
 
-* Install PyDistMesh
+Download the Zenodo archive (20G) with the primary data output from PetIBM.
+
+Generate all secondary data and figures of the manuscript (~20 minutes):
 
 ```shell
-cd sfw
-wget https://github.com/bfroehle/pydistmesh/archive/v1.2.tar.gz
-tar -xzf v1.2.tar.gz
-cd pydistmesh-1.2
-conda activate py36-rolling
-python setup.py install
+cd repro-packs
+docker run --rm -it -v $(pwd):/postprocessing mesnardo/petibm-rollingpitching:prepost /bin/bash /postprocessing/scripts/generate_all_figures.sh > repro-packs.log 2>&1
 ```
-
-* Install PETSc (3.12.2) and PetIBM (0.5.1)
-
-To install PETSc, please refer to the [installation instructions](https://www.mcs.anl.gov/petsc/documentation/installation.html).
-
-To install PetIBM, please refer to the [installation instructions](https://barbagroup.github.io/PetIBM/md_doc_markdowns_installation.html).
-
-* Install VisIt (2.12.1)
-
-To install VisIt, please refer to the [installation instructions](https://wci.llnl.gov/simulation/computer-codes/visit/executables).
 
 ## LICENSE
 
