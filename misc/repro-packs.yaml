@@ -186,6 +186,7 @@ Re200_St0.6_AR2.55_psi90/qcrit_wx_perspective_zoom_view_0008500_post.png:
 - scripts/create_qcrit_wx_cc_xdmf.py
 - scripts/visit_plot_qcrit_wx_zoom.py
 - scripts/process_qcrit_wx_snapshot_zoom.py
+- scripts/qcrit_wx_snapshot_zoom.yaml
 - scripts/visit_perspective_zoom_view3d.yaml
 - output/grid.h5
 - output/0008500.h5
