@@ -10,6 +10,44 @@ The present directory contains all the input files and post-processing scripts, 
 * `Re*_St*_AR*_psi*`: simulation folders of the parametric study; for example:
   * `Re200_St0.6_AR1.27_psi90`: simulation folder to compute the three-dimensional flow around a pitching and rolling flat plate with aspect ratio `AR=1.27` at Reynolds number `Re=200`, Strouhal number `St=0.6`, with a phase difference of `psi=90` degrees between the rolling and pitching motions.
 
+## Runtimes
+
+Each simulation job was submitted to SLURM scheduling system on Pegasus (HPC cluster at GWU), using nodes of the `small-gpu` partition.
+
+Hardware configuration of small GPU nodes:
+
+* Dell PowerEdge R740 server
+* (2) NVIDIA Tesla V100 GPU
+* Dual 20-Core 3.70GHz Intel Xeon Gold 6148 processors
+* 192GB of 2666MHz DDR4 ECC Register DRAM
+* 800 GB SSD onboard storage (used for boot and local scratch space)
+* Mellanox EDR Infiniband controller to 100GB fabric
+
+| Simulation | # time steps | # grid cells (10^6) | # nodes | runtime (hr) |
+|:-|:-:|:-:|:-:|:-:|
+| `independence/run1` | 10000 | 5.1 | 1 | 3.0 |
+| `independence/run2` | 10000 | 11.5 | 1 | 7.4 |
+| `independence/run3` | 10000 | 21.1 | 2 | 8.4 |
+| `independence/run4` | 10000 | 72.3 | 6 | 23.7 |
+| `independence/run5` | 10000 | 21.1 | 2 | 10.8 |
+| `independence/run6` | 5000 | 21.1 | 2 | 5.1 |
+| `independence/run7` | 10000 | 21.1 | 2 | 12.8 |
+| `Re100_St0.6_AR1.27_psi90` | 10000 | 21.1 | 2 | 11.0 |
+| `Re200_St0.4_AR1.27_psi90` | 10000 | 21.1 | 2 | 9.8 |
+| `Re200_St0.6_AR1.27_psi100` | 10000 | 21.1 | 2 | 9.1 |
+| `Re200_St0.6_AR1.27_psi110` | 10000 | 21.1 | 2 | 8.1 |
+| `Re200_St0.6_AR1.27_psi120` | 10000 | 21.1 | 2 | 9.0 |
+| `Re200_St0.6_AR1.27_psi60` | 10000 | 21.1 | 2 | 8.1 |
+| `Re200_St0.6_AR1.27_psi70` | 10000 | 21.1 | 2 | 9.7 |
+| `Re200_St0.6_AR1.27_psi80` | 10000 | 21.1 | 2 | 9.7 |
+| `Re200_St0.6_AR1.27_psi90` | 10000 | 21.1 | 2 | 13.8 |
+| `Re200_St0.6_AR1.91_psi90` | 10000 | 29.9 | 2 | 9.0 |
+| `Re200_St0.6_AR2.55_psi90` | 10000 | 42.6 | 2 | 12.8 |
+| `Re200_St0.8_AR1.27_psi90` | 10000 | 21.1 | 2 | 9.2 |
+| `Re200_St1.0_AR1.27_psi90` | 10000 | 21.1 | 2 | 8.2 |
+| `Re200_St1.2_AR1.27_psi90` | 10000 | 21.1 | 2 | 12.2 |
+| `Re400_St0.6_AR1.27_psi90` | 10000 | 21.1 | 2 | 11.0 |
+
 ## Post-processing steps
 
 To generate the figures of the manuscript:
