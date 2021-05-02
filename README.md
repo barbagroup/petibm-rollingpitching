@@ -31,6 +31,8 @@ This repository contains a computational replication of the scientific findings 
 
 ## Reproducibility packages
 
+* Olivier Mesnard & Lorena A. Barba (2021). [Re] Three-dimensional wake topology and propulsive performance of low-aspect-ratio pitching-rolling plates (repro-packs). [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4732946.svg)](https://doi.org/10.5281/zenodo.4732946)
+
 Download the Zenodo archive (20G) with the primary data output from PetIBM.
 
 Generate all secondary data and figures of the manuscript (~20 minutes):
