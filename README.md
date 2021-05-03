@@ -1,4 +1,4 @@
-# [Re] Three-dimensional wake topology and propulsive performance of las-aspect-ratio pitching-rolling plates
+# [Re] Three-dimensional wake topology and propulsive performance of low-aspect-ratio pitching-rolling plates
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/mesnardo/petibm-rollingpitching/raw/master/LICENSE)
 [![Docker Hub](https://img.shields.io/badge/hosted-docker--hub-informational.svg)](https://cloud.docker.com/u/mesnardo/repository/docker/mesnardo/petibm-rollingpitching)
