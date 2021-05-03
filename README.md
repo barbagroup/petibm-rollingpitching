@@ -3,6 +3,7 @@
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/mesnardo/petibm-rollingpitching/raw/master/LICENSE)
 [![Docker Hub](https://img.shields.io/badge/hosted-docker--hub-informational.svg)](https://cloud.docker.com/u/mesnardo/repository/docker/mesnardo/petibm-rollingpitching)
 [![Singularity Hub](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/2855)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4733323.svg)](https://doi.org/10.5281/zenodo.4733323)
 
 * Olivier Mesnard (The George Washington University)
 * Lorena A. Barba (The George Washington University)
