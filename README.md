@@ -30,6 +30,16 @@ This repository contains a computational replication of the scientific findings 
 * [PetibmPy](https://github.com/mesnardo/petibmpy) (0.2)
 * [VisIt](https://wci.llnl.gov/simulation/computer-codes/visit) (2.12.3)
 
+## Container images
+
+* Olivier Mesnard & Lorena A. Barba (2021). [Re] Three-dimensional wake topology and propulsive performance of low-aspect-ratio pitching-rolling plates (container images). [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5090342.svg)](https://doi.org/10.5281/zenodo.5090342)
+
+The deposit (4.7GB) contains the Docker and Singularity images used for the replication:
+
+* `petibm-rollingpitching_PetIBM0.5.1-xenial.tar`: tar archive of the Docker image `mesnardo/petibm-rollingpitching:PetIBM0.5.1-xenial` which includes the PetIBM application for the 3D rolling and pitching wing
+* `petibm-rollingpitching_PetIBM0.5.1-xenial.sif`: Singularity image (build from the Docker image) that was used to run the simulations on the `pegasus` HPC cluster (at the George Washington University)
+* `petibm-rollingpitching_prepost.tar`: tar archive of the Docker image `mesnardo/petibm-rollingpitching:prepost` which contains all tools to pre- and post-process the numerical outputs of the simulations
+
 ## Reproducibility packages
 
 * Olivier Mesnard & Lorena A. Barba (2021). [Re] Three-dimensional wake topology and propulsive performance of low-aspect-ratio pitching-rolling plates (repro-packs). [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4732946.svg)](https://doi.org/10.5281/zenodo.4732946)
