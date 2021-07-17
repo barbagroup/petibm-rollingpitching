@@ -40,6 +40,10 @@ The deposit (4.7GB) contains the Docker and Singularity images used for the repl
 * `petibm-rollingpitching_PetIBM0.5.1-xenial.sif`: Singularity image (build from the Docker image) that was used to run the simulations on the `pegasus` HPC cluster (at the George Washington University)
 * `petibm-rollingpitching_prepost.tar`: tar archive of the Docker image `mesnardo/petibm-rollingpitching:prepost` which contains all tools to pre- and post-process the numerical outputs of the simulations
 
+## Hardware configuration and run times
+
+See [this README section](runs/README.md/#hardware-configuration-and-run-times).
+
 ## Reproducibility packages
 
 * Olivier Mesnard & Lorena A. Barba (2021). [Re] Three-dimensional wake topology and propulsive performance of low-aspect-ratio pitching-rolling plates (repro-packs). [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4732946.svg)](https://doi.org/10.5281/zenodo.4732946)

@@ -46,7 +46,7 @@ Hardware configuration of small GPU nodes:
 * 800 GB SSD onboard storage (used for boot and local scratch space)
 * Mellanox EDR Infiniband controller to 100GB fabric
 
-The simulation computed 10000 time steps in about 9 hours on 2 `small-gpu` nodes (20 MPI processes and 2 GPU devices per node) in a Singularity container.
+The simulation computed 10000 time steps in about 9 hours on 4 `small-gpu` nodes (20 MPI processes and 2 GPU devices per node) in a Singularity container.
 
 ## Post-processing steps
 
