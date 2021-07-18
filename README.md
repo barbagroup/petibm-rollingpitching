@@ -40,6 +40,8 @@ The deposit (4.7GB) contains the Docker and Singularity images used for the repl
 * `petibm-rollingpitching_PetIBM0.5.1-xenial.sif`: Singularity image (build from the Docker image) that was used to run the simulations on the `pegasus` HPC cluster (at the George Washington University)
 * `petibm-rollingpitching_prepost.tar`: tar archive of the Docker image `mesnardo/petibm-rollingpitching:prepost` which contains all tools to pre- and post-process the numerical outputs of the simulations
 
+We used Docker 1.39 (see [version info](docker/Docker.version)) and Singularity 3.4.2.
+
 ## Hardware configuration and run times
 
 See [this README section](runs/README.md/#hardware-configuration-and-run-times).

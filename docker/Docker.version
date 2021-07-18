@@ -1,0 +1,19 @@
+# docker version on phantom
+Client: Docker Engine - Community
+ Version:           19.03.10
+ API version:       1.39
+ Go version:        go1.13.10
+ Git commit:        9424aeaee9
+ Built:             Thu May 28 22:17:05 2020
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          18.09.7
+  API version:      1.39 (minimum version 1.12)
+  Go version:       go1.10.8
+  Git commit:       2d0083d
+  Built:            Thu Jun 27 17:23:02 2019
+  OS/Arch:          linux/amd64
+  Experimental:     false
