@@ -13,6 +13,7 @@ The present directory contains all the input files and post-processing scripts, 
 ## Hardware configuration and run times
 
 Each simulation job was submitted to the SLURM scheduling system on Pegasus (HPC cluster at the George Washington University), using nodes of the `small-gpu` partition.
+(Note: The SLURM submission scripts were designed for the user `mesnardo` to run on Pegasus; do not use them as such; use them as an example to develop your own submission script.)
 
 Hardware configuration of the nodes on the `small-gpu` partition:
 

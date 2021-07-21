@@ -36,6 +36,7 @@ and run the instructions displayed in the following sub-sections.
 ## Submit the simulation job
 
 The simulation job was submitted to SLURM scheduling system on Pegasus (HPC cluster at GWU), requesting 2 nodes of the `small-gpu` partition; CLI: `sbatch pegasus.slurm`.
+(Note: The SLURM submission script was designed for the user `mesnardo` to run on Pegasus; do not use it as such; use it as an example to develop your own submission script.)
 
 Hardware configuration of small GPU nodes:
 
