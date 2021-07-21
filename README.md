@@ -50,7 +50,11 @@ See [this README section](runs/README.md/#hardware-configuration-and-run-times).
 
 * Olivier Mesnard & Lorena A. Barba (2021). [Re] Three-dimensional wake topology and propulsive performance of low-aspect-ratio pitching-rolling plates (repro-packs). [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4732946.svg)](https://doi.org/10.5281/zenodo.4732946)
 
-Download the Zenodo archive (20G) with the primary data output from PetIBM.
+Download the Zenodo archive (18.6 GB) with the primary data output from PetIBM.
+
+| :warning: WARNING |
+|:-|
+| Generating secondary data (e.g., 3D vorticity field) requires a machine with more than 16 GB of memory (32 GB is recommended). If you do not have access to such machine, one solution is to launch a `t3.2xlarge` EC2 instance on AWS and run the Docker container there (see [instructions](misc/repro-packs-on-aws.md)). |
 
 Generate all secondary data and figures of the manuscript (~20 minutes):
 
