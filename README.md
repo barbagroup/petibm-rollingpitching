@@ -42,6 +42,20 @@ The deposit (4.7GB) contains the Docker and Singularity images used for the repl
 
 We used Docker 1.39 (see [version info](docker/Docker.version)) and Singularity 3.4.2.
 
+## Software/Hardware requirements
+
+The following list of libraries and tools should be installed on the host machine to be able to run the Singularity image:
+
+* CUDA Toolkit 10.1
+* Singularity 3.4+
+* OpenMPI 3.1.4
+
+The NVIDIA AmgX library contained in the Docker image `mesnardo/petibm-rollingpitching:PetIBM0.5.1-xenial` was compiled with CUDA Toolkit 10.1 to target NVIDIA GPUs with a compute capability of 3.5 (Kepler - Tesla K20, K40), 3.7 (Kepler - Tesla K80), 6.0 (Pascal - Tesla P100), and 7.0 (Volta - Tesla V100).
+
+Note we used NVIDIA V100 GPUs to solve the pressure Poisson system in our simulations; the two other linear systems were solved on CPUs with the PETSc library.
+If no GPUs are available on the host machine, one should still be able to use the same Docker or Singularity image and solve the Poisson system on CPUs.
+Otherwise, one should be able to launch and configure an AWS EC2 instance following [these instructions](misc/running-on-aws.md).
+
 ## Hardware configuration and run times
 
 See [this README section](runs/README.md/#hardware-configuration-and-run-times).
