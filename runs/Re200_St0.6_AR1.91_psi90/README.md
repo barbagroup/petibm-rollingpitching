@@ -36,6 +36,7 @@ and run the instructions displayed in the following sub-sections.
 ## Submit the simulation job
 
 The simulation job was submitted to SLURM scheduling system on Pegasus (HPC cluster at GWU), requesting 2 nodes of the `small-gpu` partition; CLI: `sbatch pegasus.slurm`.
+(Note: The SLURM submission script was designed for the user `mesnardo` to run on Pegasus; do not use it as such; use it as an example to develop your own submission script.)
 
 Hardware configuration of small GPU nodes:
 
@@ -46,7 +47,7 @@ Hardware configuration of small GPU nodes:
 * 800 GB SSD onboard storage (used for boot and local scratch space)
 * Mellanox EDR Infiniband controller to 100GB fabric
 
-The simulation computed 10000 time steps in about 9 hours on 2 `small-gpu` nodes (20 MPI processes and 2 GPU devices per node) in a Singularity container.
+The simulation computed 10000 time steps in about 9 hours on 4 `small-gpu` nodes (20 MPI processes and 2 GPU devices per node) in a Singularity container.
 
 ## Post-processing steps
 

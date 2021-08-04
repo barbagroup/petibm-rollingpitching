@@ -39,7 +39,7 @@ echo $SLURM_JOB_ID
 printf "\n*** JOB NODE LIST ***\n"
 echo $SLURM_JOB_NODELIST
 
-simudir="/lustre/groups/barbalab/mesnardo/rollingpitching/Re200_St0.6_AR1.27_psi90-new"
+simudir="/lustre/groups/barbalab/mesnardo/rollingpitching/Re200_St0.6_AR1.27_psi90"
 indir="/mnt"
 img="/SEAS/home/mesnardo/images/petibm-rollingpitching_petibm0.5.1-xenial.sif"
 
