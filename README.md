@@ -9,10 +9,12 @@
 * Lorena A. Barba (The George Washington University)
 
 This repository contains a computational replication of the scientific findings published by Li and Dong (Physics of Fluids, 2016).
+The study was published in ReScience C [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5234931.svg)](https://doi.org/10.5281/zenodo.5234931)
 
 ## References
 
 * Li, C., & Dong, H. (2016). Three-dimensional wake topology and propulsive performance of low-aspect-ratio pitching-rolling plates. Physics of Fluids, 28(7), 071901.
+* Olivier Mesnard, & Lorena A. Barba. (2021). [Re] Three-dimensional wake topology and propulsive performance of low-aspect-ratio pitching-rolling plates. Rescience C, 7(1), #7. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5234931.svg)](https://doi.org/10.5281/zenodo.5234931)
 
 ## Contents
 
